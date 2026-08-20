@@ -15,7 +15,7 @@ interface Player {
 }
 
 export default function PlayersPage() {
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState<Player[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [selectedStage, setSelectedStage] = useState('All')
@@ -38,7 +38,7 @@ export default function PlayersPage() {
   }, [])
 
   const filteredPlayers = players.filter(player => {
-    const matchesSearch = `${player.first_name} ${player.last_name} ${player.primary_position} ${player.current_club}`
+    const matchesSearch = `${player.first_name} ${player.last_name} ${player.primary_position} ${player.current_club || ''}`
       .toLowerCase()
       .includes(search.toLowerCase())
     
@@ -47,26 +47,35 @@ export default function PlayersPage() {
   })
 
   return (
-    
-      
-        Rugby Enterprise Pathway
-      
-      
-        High-Performance Athlete Evaluation & Pathway Tracking
-      
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '30px 20px', fontFamily: 'sans-serif' }}>
+      <div style={{ marginBottom: '30px' }}>
+        <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#111', marginBottom: '8px' }}>
+          Rugby Enterprise Pathway
+        </h1>
+        <p style={{ fontSize: '15px', color: '#555' }}>
+          High-Performance Athlete Evaluation & Pathway Tracking
+        </p>
+      </div>
 
       {/* Controls */}
-      
-         setSearch(e.target.value)}
+      <div style={{ display: 'flex', gap: '15px', marginBottom: '25px', flexWrap: 'wrap' }}>
+        <input
+          type="text"
+          placeholder="Search players, positions, clubs..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           style={{
             flex: '1',
+            minWidth: '250px',
             padding: '10px 14px',
             borderRadius: '8px',
             border: '1px solid #ccc',
             fontSize: '14px'
           }}
         />
-         setSelectedStage(e.target.value)}
+        <select
+          value={selectedStage}
+          onChange={(e) => setSelectedStage(e.target.value)}
           style={{
             padding: '10px 14px',
             borderRadius: '8px',
@@ -75,50 +84,57 @@ export default function PlayersPage() {
             backgroundColor: '#fff'
           }}
         >
-          All Stages
-          Local Club / HS
-          State Select (Tornadoes)
-          Regional ITT (Midwest)
-          National Junior Eagles
-        
-      
+          <option value="All">All Stages</option>
+          <option value="Local Club / HS">Local Club / HS</option>
+          <option value="State Select (Tornadoes)">State Select (Tornadoes)</option>
+          <option value="Regional ITT (Midwest)">Regional ITT (Midwest)</option>
+          <option value="National Junior Eagles">National Junior Eagles</option>
+        </select>
+      </div>
 
       {/* Player List */}
       {loading ? (
-        Loading database...
+        <div style={{ padding: '40px', textAlign: 'center', color: '#666' }}>Loading database...</div>
       ) : filteredPlayers.length === 0 ? (
-        No players found matching criteria.
+        <div style={{ padding: '40px', textAlign: 'center', color: '#666' }}>No players found matching criteria.</div>
       ) : (
-        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
           {filteredPlayers.map((player) => (
-            
-              
-                
+            <div
+              key={player.id}
+              style={{
+                backgroundColor: '#fff',
+                border: '1px solid #e1e4e8',
+                borderRadius: '10px',
+                padding: '20px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0', color: '#1a1a1a' }}>
                   {player.first_name} {player.last_name}
-                
-                
+                </h3>
+                <span style={{ fontSize: '12px', fontWeight: '600', backgroundColor: '#eef2f7', color: '#0366d6', padding: '4px 8px', borderRadius: '6px' }}>
                   {player.primary_position} {player.secondary_position ? `/ ${player.secondary_position}` : ''}
-                
-              
+                </span>
+              </div>
 
-              
-                Club: {player.current_club || 'Unassigned'}
-                Pathway Stage: {player.stage || 'General Pool'}
+              <div style={{ fontSize: '14px', color: '#444', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <div><strong>Club:</strong> {player.current_club || 'Unassigned'}</div>
+                <div><strong>Pathway Stage:</strong> {player.stage || 'General Pool'}</div>
                 {player.bronco_test_seconds && (
-                  
-                    Bronco Score: {Math.floor(player.bronco_test_seconds / 60)}m {player.bronco_test_seconds % 60}s
-                  
+                  <div><strong>Bronco Score:</strong> {Math.floor(player.bronco_test_seconds / 60)}m {player.bronco_test_seconds % 60}s</div>
                 )}
                 {player.notes && (
-                  
-                    "{player.notes}"
-                  
+                  <div style={{ marginTop: '8px', fontStyle: 'italic', color: '#666', fontSize: '13px' }}>
+                    &ldquo;{player.notes}&rdquo;
+                  </div>
                 )}
-              
-            
+              </div>
+            </div>
           ))}
-        
+        </div>
       )}
-    
+    </div>
   )
 }
