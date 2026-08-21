@@ -87,7 +87,8 @@ export default function EdisonDashboard() {
             <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "#94a3b8" }}>High-Performance Athlete Intelligence Portal</p>
           </div>
           <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-            <Link href="/directory" style={{ backgroundColor: "#1e293b", color: "#38bdf8", padding: "8px 16px", borderRadius: "8px", textDecoration: "none", fontSize: "13px", fontWeight: "600", border: "1px solid #334155" }}>
+            {/* Updated link pointing directly to the folder path we created */}
+            <Link href="/app/directory" style={{ backgroundColor: "#1e293b", color: "#38bdf8", padding: "8px 16px", borderRadius: "8px", textDecoration: "none", fontSize: "13px", fontWeight: "600", border: "1px solid #334155" }}>
               Roster Manager
             </Link>
             <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", border: "1px solid rgba(217, 119, 6, 0.3)", color: "#f59e0b", padding: "8px 16px", borderRadius: "8px", fontSize: "12px", fontWeight: "700", letterSpacing: "0.05em" }}>
