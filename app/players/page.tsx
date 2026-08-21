@@ -1,140 +1,59 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
-interface Player {
-  id: string
-  first_name: string
-  last_name: string
-  primary_position: string
-  secondary_position?: string
-  current_club?: string
-  stage?: string
-  bronco_test_seconds?: number
-  notes?: string
-}
+import Link from "next/link";
+import { initialPlayers } from "./data";
 
 export default function PlayersPage() {
-  const [players, setPlayers] = useState<Player[]>([])
-  const [loading, setLoading] = useState(true)
-  const [search, setSearch] = useState('')
-  const [selectedStage, setSelectedStage] = useState('All')
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const res = await fetch('/api/players')
-        if (res.ok) {
-          const data = await res.json()
-          setPlayers(data)
-        }
-      } catch (err) {
-        console.error('Failed to load players:', err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadData()
-  }, [])
-
-  const filteredPlayers = players.filter(player => {
-    const matchesSearch = `${player.first_name} ${player.last_name} ${player.primary_position} ${player.current_club || ''}`
-      .toLowerCase()
-      .includes(search.toLowerCase())
-    
-    const matchesStage = selectedStage === 'All' || player.stage === selectedStage
-    return matchesSearch && matchesStage
-  })
-
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '30px 20px', fontFamily: 'sans-serif' }}>
-      <div style={{ marginBottom: '30px' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#111', marginBottom: '8px' }}>
-          Rugby Enterprise Pathway
-        </h1>
-        <p style={{ fontSize: '15px', color: '#555' }}>
-          High-Performance Athlete Evaluation & Pathway Tracking
-        </p>
-      </div>
-
-      {/* Controls */}
-      <div style={{ display: 'flex', gap: '15px', marginBottom: '25px', flexWrap: 'wrap' }}>
-        <input
-          type="text"
-          placeholder="Search players, positions, clubs..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            flex: '1',
-            minWidth: '250px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
-            fontSize: '14px'
-          }}
-        />
-        <select
-          value={selectedStage}
-          onChange={(e) => setSelectedStage(e.target.value)}
-          style={{
-            padding: '10px 14px',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
-            fontSize: '14px',
-            backgroundColor: '#fff'
-          }}
-        >
-          <option value="All">All Stages</option>
-          <option value="Local Club / HS">Local Club / HS</option>
-          <option value="State Select (Tornadoes)">State Select (Tornadoes)</option>
-          <option value="Regional ITT (Midwest)">Regional ITT (Midwest)</option>
-          <option value="National Junior Eagles">National Junior Eagles</option>
-        </select>
-      </div>
-
-      {/* Player List */}
-      {loading ? (
-        <div style={{ padding: '40px', textAlign: 'center', color: '#666' }}>Loading database...</div>
-      ) : filteredPlayers.length === 0 ? (
-        <div style={{ padding: '40px', textAlign: 'center', color: '#666' }}>No players found matching criteria.</div>
-      ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-          {filteredPlayers.map((player) => (
-            <div
-              key={player.id}
-              style={{
-                backgroundColor: '#fff',
-                border: '1px solid #e1e4e8',
-                borderRadius: '10px',
-                padding: '20px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0', color: '#1a1a1a' }}>
-                  {player.first_name} {player.last_name}
-                </h3>
-                <span style={{ fontSize: '12px', fontWeight: '600', backgroundColor: '#eef2f7', color: '#0366d6', padding: '4px 8px', borderRadius: '6px' }}>
-                  {player.primary_position} {player.secondary_position ? `/ ${player.secondary_position}` : ''}
-                </span>
-              </div>
-
-              <div style={{ fontSize: '14px', color: '#444', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <div><strong>Club:</strong> {player.current_club || 'Unassigned'}</div>
-                <div><strong>Pathway Stage:</strong> {player.stage || 'General Pool'}</div>
-                {player.bronco_test_seconds && (
-                  <div><strong>Bronco Score:</strong> {Math.floor(player.bronco_test_seconds / 60)}m {player.bronco_test_seconds % 60}s</div>
-                )}
-                {player.notes && (
-                  <div style={{ marginTop: '8px', fontStyle: 'italic', color: '#666', fontSize: '13px' }}>
-                    &ldquo;{player.notes}&rdquo;
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+    <main style={{ minHeight: "100vh", backgroundColor: "#f8fafc", fontFamily: "system-ui, sans-serif", padding: "40px 20px" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        
+        {/* Navigation & Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+          <div>
+            <Link href="/" style={{ color: "#2563eb", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
+              &larr; Back to Dashboard
+            </Link>
+            <h1 style={{ margin: "8px 0 0 0", fontSize: "26px", fontWeight: "700", color: "#0f172a" }}>Athlete Roster</h1>
+          </div>
         </div>
-      )}
-    </div>
-  )
+
+        {/* Player Table Container */}
+        <div style={{ backgroundColor: "white", borderRadius: "12px", border: "1px solid #e2e8f0", overflow: "hidden", boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.05)" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
+            <thead>
+              <tr style={{ backgroundColor: "#f1f5f9", borderBottom: "1px solid #e2e8f0", color: "#475569", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                <th style={{ padding: "16px" }}>Name</th>
+                <th style={{ padding: "16px" }}>Position</th>
+                <th style={{ padding: "16px" }}>Age</th>
+                <th style={{ padding: "16px" }}>Weight</th>
+                <th style={{ padding: "16px" }}>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {initialPlayers.map((player) => (
+                <tr key={player.id} style={{ borderBottom: "1px solid #f1f5f9" }}>
+                  <td style={{ padding: "16px", fontWeight: "600", color: "#1e293b" }}>{player.name}</td>
+                  <td style={{ padding: "16px", color: "#64748b" }}>{player.position}</td>
+                  <td style={{ padding: "16px", color: "#64748b" }}>{player.age}</td>
+                  <td style={{ padding: "16px", color: "#64748b" }}>{player.weight}</td>
+                  <td style={{ padding: "16px" }}>
+                    <span style={{ 
+                      padding: "4px 10px", 
+                      borderRadius: "20px", 
+                      fontSize: "12px", 
+                      fontWeight: "600",
+                      backgroundColor: player.status === "Active" ? "#dcfce7" : "#fef3c7",
+                      color: player.status === "Active" ? "#166534" : "#92400e"
+                    }}>
+                      {player.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </main>
+  );
 }
