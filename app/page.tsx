@@ -25,19 +25,19 @@ export default function HomePage() {
         {/* Hero Section */}
         <div style={{ textAlign: "center", padding: "60px 20px", backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "16px", marginBottom: "40px" }}>
           <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", border: "1px solid rgba(217, 119, 6, 0.3)", padding: "6px 14px", borderRadius: "20px", fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            Multi-Sport High-Performance Infrastructure
+            Global Cross-Hemispheric Talent Exchange
           </span>
-          <h1 style={{ fontSize: "42px", fontWeight: "900", color: "#f8fafc", margin: "20px 0 15px 0", letterSpacing: "-0.02em" }}>
-            Centralizing Athlete Intelligence &amp; Talent Pathways
+          <h1 style={{ fontSize: "40px", fontWeight: "900", color: "#f8fafc", margin: "20px 0 15px 0", letterSpacing: "-0.02em" }}>
+            Connecting International Pathways to US Universities &amp; the MLR
           </h1>
-          <p style={{ color: "#94a3b8", fontSize: "18px", lineHeight: "1.6", maxWidth: "700px", margin: "0 auto 30px auto" }}>
-            Modular telemetry, standardized performance tracking, and direct commercial asset valuation for elite sports organizations.
+          <p style={{ color: "#94a3b8", fontSize: "18px", lineHeight: "1.6", maxWidth: "800px", margin: "0 auto 30px auto" }}>
+            Unifying U18, U20, and U23 talent intelligence across North America, Canada, and South America—bridging elite prospects directly to American collegiate powerhouses and professional Major League Rugby pipelines.
           </p>
           
           {/* Action Buttons */}
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <Link href="/directory" style={{ backgroundColor: "#d97706", color: "#fff", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700" }}>
-              Explore Roster Directory &rarr;
+              Explore Global Roster Directory &rarr;
             </Link>
             <Link href="/deck" style={{ backgroundColor: "#020617", color: "#f59e0b", border: "1px solid #d97706", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700" }}>
               View Pitch Deck 📊
@@ -49,33 +49,33 @@ export default function HomePage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
             <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 01</span>
-            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Talent Identification</h3>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Hemispheric Exchange</h3>
             <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
-              Connecting regional select-side pathways directly with professional club structures to eliminate overlooked prospects.
+              Seamlessly connect South American and Canadian prospects competing in international tournaments directly with U.S. collegiate programs.
             </p>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
             <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 02</span>
-            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Biometric Telemetry</h3>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>MLR Scouting Pipeline</h3>
             <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
-              Standardizing physical metrics, GPS workload data, and performance indicators into a unified tracking intelligence engine.
+              Provide Major League Rugby front offices with verified U20/U23 telemetry and standardized performance data to eliminate guesswork.
             </p>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
             <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 03</span>
-            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Asset Valuation</h3>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Biometric Intelligence</h3>
             <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
-              Providing transparent, verified data models to assess athlete performance value across underserved sports markets.
+              Track physical metrics, GPS workloads, and developmental progression across borders through a unified tracking engine.
             </p>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
             <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 04</span>
-            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Direct Infrastructure</h3>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Direct Commercial Access</h3>
             <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
-              Removing operational friction and middleman costs through streamlined digital governance and direct connectivity.
+              Remove regional middlemen and administrative friction to establish transparent player asset valuation globally.
             </p>
           </div>
         </div>
