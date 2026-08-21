@@ -4,14 +4,14 @@ import { useState } from "react";
 
 export default function PlayersPage() {
   const [players, setPlayers] = useState([
-    { id: "1", name: "Marcus Vance", position: "Prop", age: 20, weight: "245 lbs", status: "Active" },
-    { id: "2", name: "Liam O'Connor", position: "Hooker", age: 19, weight: "220 lbs", status: "Active" },
-    { id: "3", name: "Dante Holloway", position: "Lock", age: 21, weight: "235 lbs", status: "Active" },
-    { id: "4", name: "Caleb Sterling", position: "Scrum-half", age: 18, weight: "175 lbs", status: "Development" },
-    { id: "5", name: "Jonah Reed", position: "Fly-half", age: 20, weight: "190 lbs", status: "Active" },
+    { id: "1", name: "Marcus Vance", position: "Prop", age: 20, weight: "245 lbs", speed: "5.1s (40m)", beepTest: "14.2", status: "Active" },
+    { id: "2", name: "Liam O'Connor", position: "Hooker", age: 19, weight: "220 lbs", speed: "4.9s (40m)", beepTest: "15.1", status: "Active" },
+    { id: "3", name: "Dante Holloway", position: "Lock", age: 21, weight: "235 lbs", speed: "5.3s (40m)", beepTest: "13.8", status: "Active" },
+    { id: "4", name: "Caleb Sterling", position: "Scrum-half", age: 18, weight: "175 lbs", speed: "4.7s (40m)", beepTest: "16.2", status: "Development" },
+    { id: "5", name: "Jonah Reed", position: "Fly-half", age: 20, weight: "190 lbs", speed: "4.8s (40m)", beepTest: "15.9", status: "Active" },
   ]);
 
-  const [form, setForm] = useState({ name: "", position: "", age: "", weight: "", status: "Active" });
+  const [form, setForm] = useState({ name: "", position: "", age: "", weight: "", speed: "", beepTest: "", status: "Active" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,23 +23,25 @@ export default function PlayersPage() {
       position: form.position,
       age: Number(form.age) || 18,
       weight: form.weight || "180 lbs",
+      speed: form.speed || "5.0s (40m)",
+      beepTest: form.beepTest || "14.0",
       status: form.status,
     };
 
     setPlayers([newPlayer, ...players]);
-    setForm({ name: "", position: "", age: "", weight: "", status: "Active" });
+    setForm({ name: "", position: "", age: "", weight: "", speed: "", beepTest: "", status: "Active" });
   };
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
-      <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         
         {/* Navigation & Header */}
         <div style={{ marginBottom: "28px" }}>
           <Link href="/" style={{ color: "#38bdf8", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
             &larr; Back to Dashboard
           </Link>
-          <h1 style={{ margin: "8px 0 0 0", fontSize: "28px", fontWeight: "700", color: "#f8fafc" }}>Athlete Roster & Management</h1>
+          <h1 style={{ margin: "8px 0 0 0", fontSize: "28px", fontWeight: "700", color: "#f8fafc" }}>Athlete Roster & Performance Metrics</h1>
           <p style={{ margin: "4px 0 0 0", fontSize: "14px", color: "#94a3b8" }}>High-Performance Pathway Database &bull; 2031 Horizon</p>
         </div>
 
@@ -63,8 +65,8 @@ export default function PlayersPage() {
 
         {/* Add Player Form */}
         <form onSubmit={handleSubmit} style={{ backgroundColor: "#0f172a", padding: "24px", borderRadius: "12px", border: "1px solid #1e293b", marginBottom: "28px" }}>
-          <h3 style={{ margin: "0 0 16px 0", fontSize: "16px", color: "#f8fafc", fontWeight: "600" }}>Register New Athlete</h3>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px", marginBottom: "16px" }}>
+          <h3 style={{ margin: "0 0 16px 0", fontSize: "16px", color: "#f8fafc", fontWeight: "600" }}>Register Athlete & Combine Data</h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px", marginBottom: "16px" }}>
             <input 
               type="text" 
               placeholder="Player Name" 
@@ -95,6 +97,20 @@ export default function PlayersPage() {
               onChange={e => setForm({...form, weight: e.target.value})} 
               style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} 
             />
+            <input 
+              type="text" 
+              placeholder="Speed (e.g. 4.8s)" 
+              value={form.speed} 
+              onChange={e => setForm({...form, speed: e.target.value})} 
+              style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} 
+            />
+            <input 
+              type="text" 
+              placeholder="Yo-Yo / Beep" 
+              value={form.beepTest} 
+              onChange={e => setForm({...form, beepTest: e.target.value})} 
+              style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} 
+            />
             <select 
               value={form.status} 
               onChange={e => setForm({...form, status: e.target.value})} 
@@ -106,7 +122,7 @@ export default function PlayersPage() {
             </select>
           </div>
           <button type="submit" style={{ backgroundColor: "#38bdf8", color: "#020617", padding: "12px 24px", borderRadius: "8px", border: "none", fontWeight: "700", cursor: "pointer", fontSize: "14px" }}>
-            Add Athlete to Roster
+            Add Athlete to Database
           </button>
         </form>
 
@@ -119,6 +135,8 @@ export default function PlayersPage() {
                 <th style={{ padding: "16px" }}>Position</th>
                 <th style={{ padding: "16px" }}>Age</th>
                 <th style={{ padding: "16px" }}>Weight</th>
+                <th style={{ padding: "16px" }}>Speed (40m)</th>
+                <th style={{ padding: "16px" }}>Yo-Yo Test</th>
                 <th style={{ padding: "16px" }}>Status</th>
               </tr>
             </thead>
@@ -129,6 +147,8 @@ export default function PlayersPage() {
                   <td style={{ padding: "16px", color: "#94a3b8" }}>{player.position}</td>
                   <td style={{ padding: "16px", color: "#94a3b8" }}>{player.age}</td>
                   <td style={{ padding: "16px", color: "#94a3b8" }}>{player.weight}</td>
+                  <td style={{ padding: "16px", color: "#38bdf8", fontWeight: "500" }}>{player.speed}</td>
+                  <td style={{ padding: "16px", color: "#4ade80", fontWeight: "500" }}>{player.beepTest}</td>
                   <td style={{ padding: "16px" }}>
                     <span style={{ 
                       padding: "4px 12px", 
