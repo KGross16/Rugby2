@@ -45,17 +45,39 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Sport Pillars */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-          {["Rugby", "Hockey", "Lacrosse", "Combat Sports"].map((sport, idx) => (
-            <div key={sport} style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
-              <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 0{idx + 1}</span>
-              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>{sport} Operations</h3>
-              <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
-                Standardized tracking pathways, regional scouting structures, and verified telemetry integration.
-              </p>
-            </div>
-          ))}
+        {/* Core Value Pillars */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
+            <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 01</span>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Talent Identification</h3>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
+              Connecting regional select-side pathways directly with professional club structures to eliminate overlooked prospects.
+            </p>
+          </div>
+
+          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
+            <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 02</span>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Biometric Telemetry</h3>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
+              Standardizing physical metrics, GPS workload data, and performance indicators into a unified tracking intelligence engine.
+            </p>
+          </div>
+
+          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
+            <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 03</span>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Asset Valuation</h3>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
+              Providing transparent, verified data models to assess athlete performance value across underserved sports markets.
+            </p>
+          </div>
+
+          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
+            <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 04</span>
+            <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>Direct Infrastructure</h3>
+            <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
+              Removing operational friction and middleman costs through streamlined digital governance and direct connectivity.
+            </p>
+          </div>
         </div>
 
       </div>
