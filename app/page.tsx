@@ -5,7 +5,7 @@ export default function Home() {
         
         {/* Header Section */}
         <div style={{ backgroundColor: "#0f172a", color: "white", padding: "32px", borderRadius: "12px", marginBottom: "24px", boxShadow: "0 4px 6px -1px rgb(0 0_0 / 0.1)" }}>
-          <h1 style={{ margin: "0 0 8px 0", fontSize: "28px", fontWeight: "700" }}>Eite Rugby Development Portal</h1>
+          <h1 style={{ margin: "0 0 8px 0", fontSize: "28px", fontWeight: "700" }}>Elite Rugby Development Portal</h1>
           <p style={{ margin: "0", color: "#94a3b8", fontSize: "16px" }}>High-performance player tracking, roster management, and strategic operations.</p>
         </div>
 
