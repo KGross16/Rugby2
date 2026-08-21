@@ -69,7 +69,7 @@ export default function PlayersPage() {
             <input type="text" placeholder="Full Name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} required />
             <input type="text" placeholder="Position" value={form.position} onChange={e => setForm({...form, position: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} required />
             <input type="number" placeholder="Age" value={form.age} onChange={e => setForm({...form, age: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} />
-            <input type="text" placeholder="Height (e.g. 6'1\")" value={form.height} onChange={e => setForm({...form, height: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} />
+            <input type="text" placeholder="Height (e.g. 6-1)" value={form.height} onChange={e => setForm({...form, height: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} />
             <input type="text" placeholder="Weight (lbs)" value={form.weight} onChange={e => setForm({...form, weight: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} />
             <input type="text" placeholder="Region" value={form.region} onChange={e => setForm({...form, region: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }} />
             <select value={form.status} onChange={e => setForm({...form, status: e.target.value})} style={{ padding: "12px", borderRadius: "8px", border: "1px solid #334155", backgroundColor: "#020617", color: "#f8fafc", fontSize: "14px" }}>
@@ -101,9 +101,9 @@ export default function PlayersPage() {
               {players.map((player) => (
                 <tr key={player.id} style={{ borderBottom: "1px solid #1e293b" }}>
                   <td style={{ padding: "16px" }}>
-                    <Link href={`/players/${player.id}`} style={{ color: "#38bdf8", fontWeight: "600", textDecoration: "none" }}>
-                      {player.name} &rarr;
-                    </Link>
+                    <span style={{ color: "#38bdf8", fontWeight: "600" }}>
+                      {player.name}
+                    </span>
                   </td>
                   <td style={{ padding: "16px", color: "#f8fafc" }}>{player.position}</td>
                   <td style={{ padding: "16px", color: "#94a3b8" }}>{player.age}</td>
