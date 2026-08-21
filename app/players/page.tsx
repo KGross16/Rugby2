@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { initialPlayers } from "./data";
+
+const players = [
+  { id: "1", name: "Marcus Vance", position: "Prop", age: 20, weight: "245 lbs", status: "Active" },
+  { id: "2", name: "Liam O'Connor", position: "Hooker", age: 19, weight: "220 lbs", status: "Active" },
+  { id: "3", name: "Dante Holloway", position: "Lock", age: 21, weight: "235 lbs", status: "Active" },
+  { id: "4", name: "Caleb Sterling", position: "Scrum-half", age: 18, weight: "175 lbs", status: "Development" },
+  { id: "5", name: "Jonah Reed", position: "Fly-half", age: 20, weight: "190 lbs", status: "Active" },
+];
 
 export default function PlayersPage() {
   return (
@@ -7,13 +14,11 @@ export default function PlayersPage() {
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         
         {/* Navigation & Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
-          <div>
-            <Link href="/" style={{ color: "#2563eb", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
-              &larr; Back to Dashboard
-            </Link>
-            <h1 style={{ margin: "8px 0 0 0", fontSize: "26px", fontWeight: "700", color: "#0f172a" }}>Athlete Roster</h1>
-          </div>
+        <div style={{ marginBottom: "24px" }}>
+          <Link href="/" style={{ color: "#2563eb", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
+            &larr; Back to Dashboard
+          </Link>
+          <h1 style={{ margin: "8px 0 0 0", fontSize: "26px", fontWeight: "700", color: "#0f172a" }}>Athlete Roster</h1>
         </div>
 
         {/* Player Table Container */}
@@ -29,7 +34,7 @@ export default function PlayersPage() {
               </tr>
             </thead>
             <tbody>
-              {initialPlayers.map((player) => (
+              {players.map((player) => (
                 <tr key={player.id} style={{ borderBottom: "1px solid #f1f5f9" }}>
                   <td style={{ padding: "16px", fontWeight: "600", color: "#1e293b" }}>{player.name}</td>
                   <td style={{ padding: "16px", color: "#64748b" }}>{player.position}</td>
