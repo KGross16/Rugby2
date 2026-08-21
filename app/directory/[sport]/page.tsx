@@ -1,121 +1,122 @@
 "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useState } from "react";
 
-export default function SportRoster() {
+export default function PlayerProfile() {
   const params = useParams();
-  const sport = typeof params.sport === 'string' ? params.sport.toLowerCase() : "rugby";
-  const [filterTier, setFilterTier] = useState("All");
+  const sport = typeof params.sport === 'string' ? params.sport : "sport";
+  const id = typeof params.id === 'string' ? params.id : "";
 
-  // Expanded international databases across Argentina, Uruguay, Canada, and Chile
-  const rosters: Record<string, any[]> = {
-    rugby: [
-      { id: "mateo-rodriguez", name: "Mateo Rodriguez", origin: "Argentina", age: 19, position: "Fly-Half / Center", tier: "Tier 1", rating: 96, status: "Verified" },
-      { id: "santiago-silva", name: "Santiago Silva", origin: "Uruguay", age: 20, position: "Flanker", tier: "Tier 2", rating: 88, status: "Pending Telemetry" },
-      { id: "liam-oconnor", name: "Liam O'Connor", origin: "Canada", age: 18, position: "Prop / Lock", tier: "Tier 1", rating: 94, status: "Verified" },
-      { id: "nicolas-herrera", name: "Nicolas Herrera", origin: "Chile", age: 21, position: "Fullback", tier: "Tier 1", rating: 92, status: "Verified" },
-      { id: "jaxson-miller", name: "Jaxson Miller", origin: "USA", age: 19, position: "Scrum-Half", tier: "Tier 2", rating: 89, status: "Verified" },
-      { id: "tomas-gomez", name: "Tomas Gomez", origin: "Argentina", age: 18, position: "Number 8", tier: "Tier 1", rating: 97, status: "Verified" }
-    ],
-    hockey: [
-      { id: "lucas-dubois", name: "Lucas Dubois", origin: "Canada", age: 18, position: "Center / Forward", tier: "Tier 1", rating: 95, status: "Verified" },
-      { id: "mateo-rossi", name: "Mateo Rossi", origin: "Argentina", age: 19, position: "Goaltender", tier: "Tier 2", rating: 89, status: "Verified" },
-      { id: "jonah-larson", name: "Jonah Larson", origin: "Canada", age: 18, position: "Defenseman", tier: "Tier 1", rating: 93, status: "Verified" }
-    ],
-    soccer: [
-      { id: "thiago-santos", name: "Thiago Santos", origin: "Uruguay", age: 19, position: "Central Midfielder", tier: "Tier 1", rating: 96, status: "Verified" },
-      { id: "matias-rojas", name: "Matias Rojas", origin: "Chile", age: 20, position: "Winger", tier: "Tier 1", rating: 94, status: "Verified" },
-      { id: "ethan-cole", name: "Ethan Cole", origin: "Canada", age: 18, position: "Center Back", tier: "Tier 2", rating: 88, status: "Verified" },
-      { id: "joaquin-valenzuela", name: "Joaquin Valenzuela", origin: "Argentina", age: 19, position: "Striker", tier: "Tier 1", rating: 98, status: "Verified" }
-    ],
-    lacrosse: [
-      { id: "caden-white", name: "Caden White", origin: "Canada", age: 19, position: "Attack", tier: "Tier 1", rating: 95, status: "Verified" },
-      { id: "brodie-smith", name: "Brodie Smith", origin: "Canada", age: 18, position: "Midfielder", tier: "Tier 1", rating: 91, status: "Verified" }
-    ],
-    combat: [
-      { id: "ignacio-gomez", name: "Ignacio Gomez", origin: "Argentina", age: 20, position: "Welterweight", tier: "Tier 1", rating: 94, status: "Verified" },
-      { id: "dante-reyes", name: "Dante Reyes", origin: "Chile", age: 21, position: "Lightweight", tier: "Tier 1", rating: 92, status: "Verified" }
-    ],
-    baseball: [
-      { id: "mateo-valdez", name: "Mateo Valdez", origin: "Argentina", age: 19, position: "Shortstop", tier: "Tier 1", rating: 95, status: "Verified" },
-      { id: "carlos-mendoza", name: "Carlos Mendoza", origin: "Chile", age: 20, position: "Pitcher", tier: "Tier 1", rating: 93, status: "Verified" }
-    ]
+  // Expanded database with position-specific physical metrics (Speed for Backs, Strength for Forwards)
+  const database: Record<string, any> = {
+    "mateo-rodriguez": {
+      name: "Mateo Rodriguez", origin: "Argentina", age: 19, position: "Fly-Half / Center", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'1\"", weight: "195 lbs", rating: 96,
+      metrics: { sprintSpeed: "33.4 km/h", acceleration: "2.9s (10m)", passingAccuracy: "94%", gameWorkload: "11.2 km" },
+      bio: "Elite playmaker from Buenos Aires with exceptional vision and tactical kicking. High acceleration metrics suited for dynamic backline systems.",
+    },
+    "santiago-silva": {
+      name: "Santiago Silva", origin: "Uruguay", age: 20, position: "Flanker", sport: "rugby",
+      tier: "Tier 2", status: "Verified", height: "6'2\"", weight: "215 lbs", rating: 88,
+      metrics: { tackleEfficiency: "92%", breakdownStealRate: "4.2/gm", benchPress: "365 lbs", squatMax: "485 lbs" },
+      bio: "Relentless breakdown operator from Montevideo. High defensive work-rate with exceptional lower-body power numbers.",
+    },
+    "liam-oconnor": {
+      name: "Liam O'Connor", origin: "Canada", age: 18, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'4\"", weight: "235 lbs", rating: 94,
+      metrics: { scrumStability: "98%", squatMax: "540 lbs", benchPress: "410 lbs", powerOutput: "1,750 W" },
+      bio: "Powerful front-row prospect out of British Columbia. Exceptional set-piece anchor with elite max-strength (Squat 540 lbs / Bench 410 lbs).",
+    },
+    "nicolas-herrera": {
+      name: "Nicolas Herrera", origin: "Chile", age: 21, position: "Fullback (Back 3)", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'0\"", weight: "185 lbs", rating: 92,
+      metrics: { topSpeed: "35.1 km/h", maxSprintOutput: "1,420 W", aerialWinRate: "89%", fieldCoverage: "10.8 km" },
+      bio: "Lightning-fast back-three counter-attacker. Clocked at an elite top speed of 35.1 km/h with exceptional aerial recovery skills.",
+    },
+    "tomas-gomez": {
+      name: "Tomas Gomez", origin: "Argentina", age: 18, position: "Number 8", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'3\"", weight: "225 lbs", rating: 97,
+      metrics: { carryMetres: "145m avg", defendersBeaten: "6.4/gm", squatMax: "510 lbs", tackleEfficiency: "94%" },
+      bio: "Generational loose forward talent from Córdoba. Combines elite ball-carrying power with explosive open-field speed.",
+    },
+    "lucas-dubois": {
+      name: "Lucas Dubois", origin: "Canada", age: 18, position: "Center / Forward", sport: "hockey",
+      tier: "Tier 1", status: "Verified", height: "6'0\"", weight: "185 lbs", rating: 95,
+      metrics: { topSpeed: "24.5 mph", edgeControl: "94%", shotVelocity: "88 mph", acceleration: "2.8s" },
+      bio: "Explosive OHL prospect with elite skating acceleration and high-velocity wrist shot.",
+    }
   };
 
-  const rawPlayers = rosters[sport] || rosters["rugby"];
-  
-  // Filter and sort players by rating descending
-  const players = rawPlayers
-    .filter((p) => filterTier === "All" || p.tier === filterTier)
-    .sort((a, b) => b.rating - a.rating);
+  const player = database[id] || {
+    name: "Athlete Profile", origin: "Unknown", age: "N/A", position: "Athlete", sport: sport,
+    tier: "Pending", status: "Unverified", height: "N/A", weight: "N/A", rating: 85,
+    metrics: { performanceIndex: "Synchronizing..." },
+    bio: "Profile data is currently being synchronized with regional telemetry engines."
+  };
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         
-        {/* Navigation & Header */}
-        <div style={{ marginBottom: "25px" }}>
-          <Link href="/directory" style={{ color: "#38bdf8", fontSize: "14px", textDecoration: "none", fontWeight: "600" }}>&larr; Back to Directory</Link>
-          <h1 style={{ fontSize: "36px", fontWeight: "900", color: "#f8fafc", textTransform: "capitalize", margin: "10px 0 5px 0" }}>
-            {sport} International Roster
-          </h1>
-          <p style={{ color: "#94a3b8", fontSize: "15px", margin: 0 }}>
-            Filtered cross-border talent pipeline across Argentina, Uruguay, Chile, and Canada. Sorted by verified telemetry index.
-          </p>
+        {/* Navigation */}
+        <div style={{ marginBottom: "30px" }}>
+          <Link href={`/directory/${sport}`} style={{ color: "#38bdf8", fontSize: "14px", textDecoration: "none", fontWeight: "600" }}>
+            &larr; Back to {sport} Roster
+          </Link>
         </div>
 
-        {/* Filter Toolbar */}
-        <div style={{ display: "flex", gap: "10px", marginBottom: "25px", alignItems: "center" }}>
-          <span style={{ fontSize: "13px", color: "#94a3b8", fontWeight: "700" }}>FILTER TIER:</span>
-          {["All", "Tier 1", "Tier 2"].map((tier) => (
-            <button
-              key={tier}
-              onClick={() => setFilterTier(tier)}
-              style={{
-                backgroundColor: filterTier === tier ? "#d97706" : "#0f172a",
-                color: filterTier === tier ? "#fff" : "#94a3b8",
-                border: "1px solid",
-                borderColor: filterTier === tier ? "#d97706" : "#1e293b",
-                padding: "6px 14px",
-                borderRadius: "8px",
-                fontSize: "13px",
-                fontWeight: "700",
-                cursor: "pointer"
-              }}
-            >
-              {tier}
-            </button>
-          ))}
+        {/* Header Card */}
+        <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "16px", marginBottom: "30px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "20px" }}>
+          <div>
+            <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
+              <span style={{ backgroundColor: "#d97706", color: "#fff", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "700" }}>{player.tier}</span>
+              <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "700" }}>Telemetry Index: {player.rating}</span>
+            </div>
+            <h1 style={{ fontSize: "36px", fontWeight: "900", color: "#f8fafc", margin: "0 0 8px 0" }}>{player.name}</h1>
+            <p style={{ color: "#94a3b8", fontSize: "16px", margin: 0 }}>
+              {player.position} &bull; Origin: <strong style={{ color: "#f8fafc" }}>{player.origin}</strong> &bull; Age {player.age}
+            </p>
+          </div>
+          <div style={{ backgroundColor: "#020617", border: "1px solid #334155", padding: "16px 20px", borderRadius: "12px", display: "flex", gap: "20px" }}>
+            <div>
+              <div style={{ fontSize: "12px", color: "#94a3b8" }}>HEIGHT</div>
+              <div style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc" }}>{player.height}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: "12px", color: "#94a3b8" }}>WEIGHT</div>
+              <div style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc" }}>{player.weight}</div>
+            </div>
+          </div>
         </div>
 
-        {/* Player List */}
-        <div style={{ display: "grid", gap: "12px" }}>
-          {players.map((p: any) => (
-            <Link key={p.id} href={`/directory/${sport}/${p.id}`} style={{ textDecoration: "none" }}>
-              <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px 24px", borderRadius: "12px", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-                   onMouseOver={(e) => e.currentTarget.style.borderColor = "#d97706"}
-                   onMouseOut={(e) => e.currentTarget.style.borderColor = "#1e293b"}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
-                    <span style={{ fontWeight: "800", fontSize: "18px", color: "#f8fafc" }}>{p.name}</span>
-                    <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", fontSize: "11px", fontWeight: "800", padding: "2px 8px", borderRadius: "4px" }}>
-                      Index: {p.rating}
-                    </span>
-                  </div>
-                  <div style={{ color: "#94a3b8", fontSize: "14px" }}>
-                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span>
-                  </div>
+        {/* Bio Section */}
+        <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px 30px", borderRadius: "16px", marginBottom: "30px" }}>
+          <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f59e0b", margin: "0 0 10px 0" }}>Scouting &amp; Profile Overview</h3>
+          <p style={{ color: "#cbd5e1", fontSize: "15px", lineHeight: "1.6", margin: 0 }}>{player.bio}</p>
+        </div>
+
+        {/* Position-Specific Telemetry Metrics Grid */}
+        <div style={{ marginBottom: "30px" }}>
+          <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Position-Specific Telemetry</h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "15px" }}>
+            {Object.entries(player.metrics).map(([key, value], idx) => (
+              <div key={idx} style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px", borderRadius: "12px" }}>
+                <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", marginBottom: "6px" }}>
+                  {key.replace(/([A-Z])/g, ' $1')}
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "700", border: "1px solid rgba(217, 119, 6, 0.2)" }}>
-                    {p.tier}
-                  </span>
-                  <span style={{ color: "#38bdf8", fontSize: "14px", fontWeight: "700" }}>View Profile &rarr;</span>
-                </div>
+                <div style={{ fontSize: "22px", fontWeight: "900", color: "#38bdf8" }}>{String(value)}</div>
               </div>
-            </Link>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Match Footage / Video Section */}
+        <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "16px" }}>
+          <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Match Footage &amp; Reeling</h3>
+          <div style={{ backgroundColor: "#020617", border: "1px dashed #334155", height: "220px", borderRadius: "12px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: "10px" }}>
+            <span style={{ fontSize: "32px" }}>▶️</span>
+            <span style={{ color: "#94a3b8", fontSize: "14px", fontWeight: "600" }}>Verified Game Tape &amp; Position-Specific Tracking Feed</span>
+          </div>
         </div>
 
       </div>
