@@ -13,77 +13,49 @@ export default function HomePage() {
             <span style={{ fontSize: "18px", fontWeight: "800", letterSpacing: "0.05em", color: "#f8fafc" }}>EDISON SPORTS TECH</span>
           </div>
           <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-            <Link href="/app/directory" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
+            <Link href="/directory" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
               Roster Directory
             </Link>
-            <Link href="/dashboard" style={{ backgroundColor: "#d97706", color: "#fff", padding: "10px 20px", borderRadius: "8px", textDecoration: "none", fontSize: "14px", fontWeight: "700" }}>
-              Launch Portal &rarr;
+            <Link href="/deck" style={{ backgroundColor: "#1e293b", color: "#f59e0b", padding: "8px 16px", borderRadius: "8px", textDecoration: "none", fontSize: "14px", fontWeight: "700", border: "1px solid #334155" }}>
+              View Pitch Deck 📊
             </Link>
           </div>
         </nav>
 
         {/* Hero Section */}
         <div style={{ textAlign: "center", padding: "60px 20px", backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "16px", marginBottom: "40px" }}>
-          <span style={{ backgroundColor: "rgba(217, 119, 6, 0.15)", color: "#f59e0b", border: "1px solid rgba(217, 119, 6, 0.3)", padding: "6px 14px", borderRadius: "20px", fontSize: "12px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-            Multi-Sport High-Performance Intelligence &bull; 2031 Horizon
+          <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", border: "1px solid rgba(217, 119, 6, 0.3)", padding: "6px 14px", borderRadius: "20px", fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            Multi-Sport High-Performance Infrastructure
           </span>
-          <h1 style={{ margin: "24px 0 16px 0", fontSize: "42px", fontWeight: "800", color: "#f8fafc", lineHeight: "1.2" }}>
-            Enterprise Talent Infrastructure for <br />
-            <span style={{ color: "#d97706" }}>Fragmented Sports Markets</span>
+          <h1 style={{ fontSize: "42px", fontWeight: "900", color: "#f8fafc", margin: "20px 0 15px 0", letterSpacing: "-0.02em" }}>
+            Centralizing Athlete Intelligence &amp; Talent Pathways
           </h1>
-          <p style={{ maxWidth: "700px", margin: "0 auto 32px auto", fontSize: "16px", color: "#94a3b8", lineHeight: "1.6" }}>
-            Unifying biometric tracking, regional pathway scouting, and asset valuation across high-growth, underserved athletic verticals.
+          <p style={{ color: "#94a3b8", fontSize: "18px", lineHeight: "1.6", maxWidth: "700px", margin: "0 auto 30px auto" }}>
+            Modular telemetry, standardized performance tracking, and direct commercial asset valuation for elite sports organizations.
           </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
-            <Link href="/dashboard" style={{ backgroundColor: "#d97706", color: "#fff", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700", boxShadow: "0 4px 12px rgba(217, 119, 6, 0.3)" }}>
-              Access Intelligence Portal
-            </Link>
-            <Link href="/app/directory" style={{ backgroundColor: "#020617", color: "#38bdf8", border: "1px solid #334155", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700" }}>
-              View Roster Pipeline
-            </Link>
-          </div>
-        </div>
-
-        {/* Core Pillars & Sports Verticals Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "40px" }}>
           
-          {/* Sports Verticals Box */}
-          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "24px", marginBottom: "16px" }}>🎯</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Multi-Sport Verticals</h3>
-            <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Modular telemetry and tracking engineered to scale across fragmented athletic markets:
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-              {["Rugby", "Baseball", "Hockey", "Lacrosse", "Combat Sports"].map(sport => (
-                <span key={sport} style={{ backgroundColor: "#020617", border: "1px solid #334155", color: "#38bdf8", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "600" }}>
-                  {sport}
-                </span>
-              ))}
-            </div>
+          {/* Action Buttons */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
+            <Link href="/directory" style={{ backgroundColor: "#d97706", color: "#fff", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700" }}>
+              Explore Roster Directory &rarr;
+            </Link>
+            <Link href="/deck" style={{ backgroundColor: "#020617", color: "#f59e0b", border: "1px solid #d97706", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700" }}>
+              View Pitch Deck 📊
+            </Link>
           </div>
-
-          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "24px", marginBottom: "16px" }}>📊</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Biometric Telemetry</h3>
-            <p style={{ margin: 0, fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Standardized performance evaluation across speed, power output, endurance thresholds, and GPS workload tracking.
-            </p>
-          </div>
-
-          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "24px", marginBottom: "16px" }}>💼</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Pipeline Commercialization</h3>
-            <p style={{ margin: 0, fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Enterprise asset databases designed to bridge regional developmental select sides with professional club ecosystems.
-            </p>
-          </div>
-
         </div>
 
-        {/* Footer Status */}
-        <div style={{ textAlign: "center", padding: "20px", borderTop: "1px solid #1e293b", color: "#64748b", fontSize: "13px" }}>
-          Edison Sports Tech &bull; Multi-Sport Enterprise Infrastructure &bull; All Systems Operational ⚡
+        {/* Sport Pillars */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+          {["Rugby", "Hockey", "Lacrosse", "Combat Sports"].map((sport, idx) => (
+            <div key={sport} style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "12px" }}>
+              <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "700", textTransform: "uppercase" }}>Pillar 0{idx + 1}</span>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "#f8fafc", margin: "10px 0 10px 0" }}>{sport} Operations</h3>
+              <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.5", margin: 0 }}>
+                Standardized tracking pathways, regional scouting structures, and verified telemetry integration.
+              </p>
+            </div>
+          ))}
         </div>
 
       </div>
