@@ -6,7 +6,9 @@ export default function DirectoryHub() {
     { name: "Rugby", count: "14 Active Profiles", slug: "rugby", desc: "Select side pipelines, forward/back telemetry, and U19/Senior frameworks." },
     { name: "Hockey", count: "8 Active Profiles", slug: "hockey", desc: "Skating metrics, endurance tracking, and regional scouting." },
     { name: "Lacrosse", count: "6 Active Profiles", slug: "lacrosse", desc: "Agility metrics, stick-work efficiency, and asset valuation." },
-    { name: "Combat Sports", count: "5 Active Profiles", slug: "combat", desc: "Weight-class telemetry, output tracking, and conditioning analytics." }
+    { name: "Combat Sports", count: "5 Active Profiles", slug: "combat", desc: "Weight-class telemetry, output tracking, and conditioning analytics." },
+    { name: "Baseball", count: "10 Active Profiles", slug: "baseball", desc: "Exit velocity, rotational metrics, and prospect tracking pipelines." },
+    { name: "Soccer", count: "12 Active Profiles", slug: "soccer", desc: "GPS workload telemetry, high-intensity distance, and academy profiling." }
   ];
 
   return (
