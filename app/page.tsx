@@ -25,14 +25,14 @@ export default function HomePage() {
         {/* Hero Section */}
         <div style={{ textAlign: "center", padding: "60px 20px", backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "16px", marginBottom: "40px" }}>
           <span style={{ backgroundColor: "rgba(217, 119, 6, 0.15)", color: "#f59e0b", border: "1px solid rgba(217, 119, 6, 0.3)", padding: "6px 14px", borderRadius: "20px", fontSize: "12px", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-            Enterprise High-Performance Intelligence &bull; 2031 Horizon
+            Multi-Sport High-Performance Intelligence &bull; 2031 Horizon
           </span>
           <h1 style={{ margin: "24px 0 16px 0", fontSize: "42px", fontWeight: "800", color: "#f8fafc", lineHeight: "1.2" }}>
-            The Next Generation of Rugby <br />
-            <span style={{ color: "#d97706" }}>Talent Identification & Analytics</span>
+            Enterprise Talent Infrastructure for <br />
+            <span style="color: #d97706">Fragmented Sports Markets</span>
           </h1>
           <p style={{ maxWidth: "700px", margin: "0 auto 32px auto", fontSize: "16px", color: "#94a3b8", lineHeight: "1.6" }}>
-            Unifying biometric performance metrics, regional pathway structures, and direct asset valuation into a single, high-performance scouting ecosystem.
+            Unifying biometric tracking, regional pathway scouting, and asset valuation across high-growth, underserved athletic verticals.
           </p>
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <Link href="/dashboard" style={{ backgroundColor: "#d97706", color: "#fff", padding: "14px 28px", borderRadius: "8px", textDecoration: "none", fontSize: "15px", fontWeight: "700", boxShadow: "0 4px 12px rgba(217, 119, 6, 0.3)" }}>
@@ -44,30 +44,38 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Core Pillars Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px", marginBottom: "40px" }}>
+        {/* Core Pillars & Sports Verticals Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "40px" }}>
           
+          {/* Sports Verticals Box */}
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "24px", marginBottom: "16px" }}>📊</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Biometric & GPS Tracking</h3>
-            <p style={{ margin: 0, fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Real-time evaluation of athlete max velocity, Bronco test thresholds, vertical power output, and 40-yard dash telemetry.
+            <div style={{ fontSize: "24px", marginBottom: "16px" }}>🎯</div>
+            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Multi-Sport Verticals</h3>
+            <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
+              Modular telemetry and tracking engineered to scale across fragmented athletic markets:
             </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              {["Rugby", "Baseball", "Hockey", "Lacrosse", "Combat Sports"].map(sport => (
+                <span key={sport} style={{ backgroundColor: "#020617", border: "1px solid #334155", color: "#38bdf8", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "600" }}>
+                  {sport}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "24px", marginBottom: "16px" }}>🏆</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Pathway Governance</h3>
+            <div style={{ fontSize: "24px", marginBottom: "16px" }}>📊</div>
+            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Biometric Telemetry</h3>
             <p style={{ margin: 0, fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Streamlined management frameworks for regional select sides, development tiers, and age-grade elite player pools.
+              Standardized performance evaluation across speed, power output, endurance thresholds, and GPS workload tracking.
             </p>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "28px", borderRadius: "12px" }}>
             <div style={{ fontSize: "24px", marginBottom: "16px" }}>💼</div>
-            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Asset Valuation & Supply</h3>
+            <h3 style={{ margin: "0 0 10px 0", fontSize: "18px", fontWeight: "700", color: "#f8fafc" }}>Pipeline Commercialization</h3>
             <p style={{ margin: 0, fontSize: "14px", color: "#94a3b8", lineHeight: "1.5" }}>
-              Enterprise-grade database structuring designed to maximize recruitment efficiency and long-term player commercialization.
+              Enterprise asset databases designed to bridge regional developmental select sides with professional club ecosystems.
             </p>
           </div>
 
@@ -75,7 +83,7 @@ export default function HomePage() {
 
         {/* Footer Status */}
         <div style={{ textAlign: "center", padding: "20px", borderTop: "1px solid #1e293b", color: "#64748b", fontSize: "13px" }}>
-          Edison Sports Tech &bull; Secure High-Performance Environment &bull; All Systems Operational ⚡
+          Edison Sports Tech &bull; Multi-Sport Enterprise Infrastructure &bull; All Systems Operational ⚡
         </div>
 
       </div>
