@@ -29,7 +29,7 @@ export default function HomePage() {
           </span>
           <h1 style={{ margin: "24px 0 16px 0", fontSize: "42px", fontWeight: "800", color: "#f8fafc", lineHeight: "1.2" }}>
             Enterprise Talent Infrastructure for <br />
-            <span style="color: #d97706">Fragmented Sports Markets</span>
+            <span style={{ color: "#d97706" }}>Fragmented Sports Markets</span>
           </h1>
           <p style={{ maxWidth: "700px", margin: "0 auto 32px auto", fontSize: "16px", color: "#94a3b8", lineHeight: "1.6" }}>
             Unifying biometric tracking, regional pathway scouting, and asset valuation across high-growth, underserved athletic verticals.
