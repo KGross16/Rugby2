@@ -7,8 +7,65 @@ export default function PlayerProfile() {
   const sport = typeof params.sport === 'string' ? params.sport : "sport";
   const id = typeof params.id === 'string' ? params.id : "";
 
-  // Expanded database with position-specific physical metrics (Speed for Backs, Strength for Forwards)
+  // Expanded multi-prospect database (5+ elite options per position grouping)
   const database: Record<string, any> = {
+    // --- PROP / LOCK (Strength & Set-Piece Focus) ---
+    "liam-oconnor": {
+      name: "Liam O'Connor", origin: "Canada", age: 18, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'4\"", weight: "235 lbs", rating: 94,
+      metrics: { scrumStability: "98%", squatMax: "540 lbs", benchPress: "410 lbs", powerOutput: "1,750 W" },
+      bio: "Powerful front-row prospect out of British Columbia. Exceptional set-piece anchor with elite max-strength (Squat 540 lbs / Bench 410 lbs).",
+    },
+    "mateo-gimenez": {
+      name: "Mateo Giménez", origin: "Argentina", age: 20, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'3\"", weight: "242 lbs", rating: 95,
+      metrics: { scrumStability: "97%", squatMax: "560 lbs", benchPress: "425 lbs", powerOutput: "1,810 W" },
+      bio: "High-motor loosehead prop from Buenos Aires. Dominant in close-quarter collisions with elite force generation on scrum engagement.",
+    },
+    "ignacio-vargas": {
+      name: "Ignacio Vargas", origin: "Uruguay", age: 19, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 2", status: "Verified", height: "6'5\"", weight: "248 lbs", rating: "91",
+      metrics: { lineoutWinRate: "96%", squatMax: "520 lbs", benchPress: "395 lbs", powerOutput: "1,690 W" },
+      bio: "Towering second-row option from Montevideo. Exceptional lineout caller and maul defensive stopper.",
+    },
+    "dante-morales": {
+      name: "Dante Morales", origin: "Chile", age: 18, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 2", status: "Verified", height: "6'2\"", weight: "230 lbs", rating: "89",
+      metrics: { scrumStability: "94%", squatMax: "495 lbs", benchPress: "380 lbs", powerOutput: "1,620 W" },
+      bio: "Mobile tighthead prop with exceptional work rate around the breakdown and high defensive tackle completion.",
+    },
+    "gabriel-roux": {
+      name: "Gabriel Roux", origin: "Canada", age: 20, position: "Prop / Lock", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'6\"", weight: "255 lbs", rating: "96",
+      metrics: { lineoutWinRate: "98%", squatMax: "575 lbs", benchPress: "440 lbs", powerOutput: "1,900 W" },
+      bio: "Elite Canadian lock prospect drawing heavy collegiate and professional interest due to unmatched physical leverage.",
+    },
+
+    // --- BACK 3 / WING / FULLBACK (Speed & Acceleration Focus) ---
+    "nicolas-herrera": {
+      name: "Nicolas Herrera", origin: "Chile", age: 21, position: "Fullback (Back 3)", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'0\"", weight: "185 lbs", rating: 92,
+      metrics: { topSpeed: "35.1 km/h", maxSprintOutput: "1,420 W", aerialWinRate: "89%", fieldCoverage: "10.8 km" },
+      bio: "Lightning-fast back-three counter-attacker. Clocked at an elite top speed of 35.1 km/h with exceptional aerial recovery skills.",
+    },
+    "lucas-silva-santos": {
+      name: "Lucas Silva Santos", origin: "Argentina", age: 19, position: "Winger (Back 3)", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "5'11\"", weight: "180 lbs", rating: 97,
+      metrics: { topSpeed: "36.4 km/h", maxSprintOutput: "1,510 W", defendersBeaten: "7.2/gm", acceleration: "2.7s" },
+      bio: "Electrifying winger out of Rosario. Possesses world-class acceleration and top-end speed profile tailored for elite MLR and Collegiate 7s/15s.",
+    },
+    "joaquin-peralta": {
+      name: "Joaquín Peralta", origin: "Uruguay", age: 18, position: "Winger (Back 3)", sport: "rugby",
+      tier: "Tier 2", status: "Verified", height: "6'1\"", weight: "188 lbs", rating: "90",
+      metrics: { topSpeed: "34.2 km/h", maxSprintOutput: "1,380 W", tryConversion: "88%", fieldCoverage: "10.2 km" },
+      bio: "Clinical finisher from Punta del Este with exceptional spatial awareness and sound defensive positioning under the high ball.",
+    },
+    "ethan-macdonald": {
+      name: "Ethan MacDonald", origin: "Canada", age: 19, position: "Fullback (Back 3)", sport: "rugby",
+      tier: "Tier 1", status: "Verified", height: "6'2\"", weight: "192 lbs", rating: "93",
+      metrics: { topSpeed: "34.8 km/h", maxSprintOutput: "1,450 W", aerialWinRate: "92%", kickingMetres: "52m avg" },
+      bio: "Versatile fullback with an absolute cannon of a boot and elite transitional recovery speed across the backfield.",
+    },
     "mateo-rodriguez": {
       name: "Mateo Rodriguez", origin: "Argentina", age: 19, position: "Fly-Half / Center", sport: "rugby",
       tier: "Tier 1", status: "Verified", height: "6'1\"", weight: "195 lbs", rating: 96,
@@ -20,30 +77,6 @@ export default function PlayerProfile() {
       tier: "Tier 2", status: "Verified", height: "6'2\"", weight: "215 lbs", rating: 88,
       metrics: { tackleEfficiency: "92%", breakdownStealRate: "4.2/gm", benchPress: "365 lbs", squatMax: "485 lbs" },
       bio: "Relentless breakdown operator from Montevideo. High defensive work-rate with exceptional lower-body power numbers.",
-    },
-    "liam-oconnor": {
-      name: "Liam O'Connor", origin: "Canada", age: 18, position: "Prop / Lock", sport: "rugby",
-      tier: "Tier 1", status: "Verified", height: "6'4\"", weight: "235 lbs", rating: 94,
-      metrics: { scrumStability: "98%", squatMax: "540 lbs", benchPress: "410 lbs", powerOutput: "1,750 W" },
-      bio: "Powerful front-row prospect out of British Columbia. Exceptional set-piece anchor with elite max-strength (Squat 540 lbs / Bench 410 lbs).",
-    },
-    "nicolas-herrera": {
-      name: "Nicolas Herrera", origin: "Chile", age: 21, position: "Fullback (Back 3)", sport: "rugby",
-      tier: "Tier 1", status: "Verified", height: "6'0\"", weight: "185 lbs", rating: 92,
-      metrics: { topSpeed: "35.1 km/h", maxSprintOutput: "1,420 W", aerialWinRate: "89%", fieldCoverage: "10.8 km" },
-      bio: "Lightning-fast back-three counter-attacker. Clocked at an elite top speed of 35.1 km/h with exceptional aerial recovery skills.",
-    },
-    "tomas-gomez": {
-      name: "Tomas Gomez", origin: "Argentina", age: 18, position: "Number 8", sport: "rugby",
-      tier: "Tier 1", status: "Verified", height: "6'3\"", weight: "225 lbs", rating: 97,
-      metrics: { carryMetres: "145m avg", defendersBeaten: "6.4/gm", squatMax: "510 lbs", tackleEfficiency: "94%" },
-      bio: "Generational loose forward talent from Córdoba. Combines elite ball-carrying power with explosive open-field speed.",
-    },
-    "lucas-dubois": {
-      name: "Lucas Dubois", origin: "Canada", age: 18, position: "Center / Forward", sport: "hockey",
-      tier: "Tier 1", status: "Verified", height: "6'0\"", weight: "185 lbs", rating: 95,
-      metrics: { topSpeed: "24.5 mph", edgeControl: "94%", shotVelocity: "88 mph", acceleration: "2.8s" },
-      bio: "Explosive OHL prospect with elite skating acceleration and high-velocity wrist shot.",
     }
   };
 
