@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useMemo } from "react";
-import { prospects } from "../../prospects"; // Pulls from our comprehensive player data file
+import { prospects } from "../../../prospects"; // Corrected file path
 
 export default function SportRoster() {
   const params = useParams();
