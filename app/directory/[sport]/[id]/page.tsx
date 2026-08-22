@@ -11,8 +11,8 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
-  // Default fallback YouTube video ID set to a clean rugby highlight
-  const videoId = player.videoId || "W7N3mQ6Wv2k";
+  // Default fallback YouTube video ID set to a verified embeddable match archive
+  const videoId = player.videoId || "gbSBVpv595Y";
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
