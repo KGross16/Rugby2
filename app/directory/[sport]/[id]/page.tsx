@@ -11,6 +11,9 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player = prospects.find((p: any) => p.id === id) || prospects[0];
 
+  // Default fallback YouTube video ID if none is set
+  const videoId = player.videoId || "Gq3s7v3rL2Q";
+
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
@@ -66,14 +69,24 @@ export default function PlayerProfile() {
 
         </div>
 
-        {/* Video Highlight Showcase */}
+        {/* Video Highlight Showcase (Embedded Player) */}
         <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px", borderRadius: "16px", marginBottom: "30px" }}>
-          <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Match & Scouting Highlights</h3>
-          <div style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "#020617", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", border: "1px dashed #334155" }}>
-            <p style={{ color: "#94a3b8", fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>Secure HD Telemetry Reel Loaded</p>
-            <span style={{ fontSize: "12px", color: "#38bdf8", backgroundColor: "rgba(56, 189, 248, 0.1)", padding: "4px 10px", borderRadius: "4px" }}>
-              Encrypted Stream Active for {player.name}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
+            <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", margin: 0 }}>Match & Scouting Highlights</h3>
+            <span style={{ fontSize: "12px", color: "#38bdf8", backgroundColor: "rgba(56, 189, 248, 0.1)", padding: "4px 10px", borderRadius: "4px", fontWeight: "600" }}>
+              Position: {player.position} Reel
             </span>
+          </div>
+          <div style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "#020617", borderRadius: "10px", overflow: "hidden", border: "1px solid #334155" }}>
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src={`https://www.youtube-nocookie.com/embed/${videoId}`} 
+              title={`${player.name} Highlight Reel`}
+              style={{ border: 0 }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            />
           </div>
         </div>
 
@@ -81,4 +94,3 @@ export default function PlayerProfile() {
     </main>
   );
 }
-      
