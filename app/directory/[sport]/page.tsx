@@ -14,7 +14,7 @@ export default function SportRoster() {
   const [selectedTier, setSelectedTier] = useState("All");
   const [sortBy, setSortBy] = useState("rating");
 
-  // Advanced filtering and sorting logic
+  // Advanced filtering and sorting logic (using 40-yard dash)
   const filteredPlayers = useMemo(() => {
     return prospects.filter(p => 
       (selectedCountry === "All" || p.origin === selectedCountry) &&
@@ -22,7 +22,7 @@ export default function SportRoster() {
       (selectedTier === "All" || p.tier === selectedTier)
     ).sort((a, b) => {
       if (sortBy === "rating") return b.rating - a.rating;
-      if (sortBy === "speed") return b.topSpeed - a.topSpeed;
+      if (sortBy === "forty") return a.fortyDash - b.fortyDash; // Lower 40 time is faster
       if (sortBy === "squat") return b.squat - a.squat;
       if (sortBy === "bench") return b.bench - a.bench;
       return 0;
@@ -81,7 +81,7 @@ export default function SportRoster() {
             </select>
           </div>
 
-          {/* Tier Filter (Replaces the ugly slider) */}
+          {/* Tier Filter */}
           <div>
             <label style={{ display: "block", fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "8px" }}>PROSPECT TIER</label>
             <select 
@@ -95,7 +95,7 @@ export default function SportRoster() {
             </select>
           </div>
 
-          {/* Sort By Metric */}
+          {/* Sort By Metric (Updated for 40-Yard Dash) */}
           <div>
             <label style={{ display: "block", fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "8px" }}>SORT BY METRIC</label>
             <select 
@@ -104,7 +104,7 @@ export default function SportRoster() {
               style={{ width: "100%", backgroundColor: "#020617", color: "#fff", border: "1px solid #334155", padding: "10px", borderRadius: "8px", fontSize: "14px" }}
             >
               <option value="rating">Top Rated Index</option>
-              <option value="speed">Fastest (Top Speed)</option>
+              <option value="forty">Fastest (40-Yard Dash)</option>
               <option value="squat">Strongest (Squat)</option>
               <option value="bench">Upper Body (Bench)</option>
             </select>
@@ -132,7 +132,7 @@ export default function SportRoster() {
                     </span>
                   </div>
                   <div style={{ color: "#94a3b8", fontSize: "14px" }}>
-                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; Speed: <strong style={{ color: "#38bdf8" }}>{p.topSpeed} km/h</strong>
+                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; 40-Yard Dash: <strong style={{ color: "#38bdf8" }}>{p.fortyDash}s</strong>
                   </div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
