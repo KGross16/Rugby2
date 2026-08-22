@@ -11,15 +11,15 @@ export default function SportRoster() {
   // Filter & Sort states
   const [selectedCountry, setSelectedCountry] = useState("All");
   const [selectedPosition, setSelectedPosition] = useState("All");
-  const [minSquat, setMinSquat] = useState(0);
-  const [sortBy, setSortBy] = useState("rating"); // Default sort by Index/Rating
+  const [selectedTier, setSelectedTier] = useState("All");
+  const [sortBy, setSortBy] = useState("rating");
 
   // Advanced filtering and sorting logic
   const filteredPlayers = useMemo(() => {
     return prospects.filter(p => 
       (selectedCountry === "All" || p.origin === selectedCountry) &&
       (selectedPosition === "All" || p.position === selectedPosition) &&
-      (p.squat >= minSquat)
+      (selectedTier === "All" || p.tier === selectedTier)
     ).sort((a, b) => {
       if (sortBy === "rating") return b.rating - a.rating;
       if (sortBy === "speed") return b.topSpeed - a.topSpeed;
@@ -27,7 +27,7 @@ export default function SportRoster() {
       if (sortBy === "bench") return b.bench - a.bench;
       return 0;
     });
-  }, [selectedCountry, selectedPosition, minSquat, sortBy]);
+  }, [selectedCountry, selectedPosition, selectedTier, sortBy]);
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
@@ -40,12 +40,12 @@ export default function SportRoster() {
             {sport} Enterprise Scouting Terminal
           </h1>
           <p style={{ color: "#94a3b8", fontSize: "15px", margin: 0 }}>
-            Active cross-border talent pipeline. Filter by country, position, and physical benchmarks.
+            Active cross-border talent pipeline. Filter by country, position, tier, and physical benchmarks.
           </p>
         </div>
 
-        {/* Investor & Coach Filter Dashboard */}
-        <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px", borderRadius: "16px", marginBottom: "30px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px" }}>
+        {/* Clean, Uniform 4-Column Filter Grid */}
+        <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px", borderRadius: "16px", marginBottom: "30px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" }}>
           
           {/* Country Filter */}
           <div>
@@ -81,7 +81,21 @@ export default function SportRoster() {
             </select>
           </div>
 
-          {/* Sort By Performance Metric */}
+          {/* Tier Filter (Replaces the ugly slider) */}
+          <div>
+            <label style={{ display: "block", fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "8px" }}>PROSPECT TIER</label>
+            <select 
+              value={selectedTier} 
+              onChange={(e) => setSelectedTier(e.target.value)}
+              style={{ width: "100%", backgroundColor: "#020617", color: "#fff", border: "1px solid #334155", padding: "10px", borderRadius: "8px", fontSize: "14px" }}
+            >
+              <option value="All">All Tiers</option>
+              <option value="Tier 1">Tier 1 (Elite)</option>
+              <option value="Tier 2">Tier 2 (Development)</option>
+            </select>
+          </div>
+
+          {/* Sort By Metric */}
           <div>
             <label style={{ display: "block", fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "8px" }}>SORT BY METRIC</label>
             <select 
@@ -94,21 +108,6 @@ export default function SportRoster() {
               <option value="squat">Strongest (Squat)</option>
               <option value="bench">Upper Body (Bench)</option>
             </select>
-          </div>
-
-          {/* Squat Benchmark Filter */}
-          <div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-              <label style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8" }}>MIN SQUAT</label>
-              <span style={{ fontSize: "12px", fontWeight: "800", color: "#f59e0b", backgroundColor: "rgba(245, 158, 11, 0.1)", padding: "2px 6px", borderRadius: "4px" }}>
-                {minSquat} lbs
-              </span>
-            </div>
-            <input 
-              type="range" min="0" max="550" step="10" value={minSquat}
-              onChange={(e) => setMinSquat(Number(e.target.value))}
-              style={{ width: "100%", accentColor: "#f59e0b", marginTop: "6px", cursor: "pointer" }}
-            />
           </div>
 
         </div>
