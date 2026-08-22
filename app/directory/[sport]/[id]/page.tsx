@@ -11,8 +11,8 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
-  // Default fallback YouTube video ID set to a verified embeddable match archive
-  const videoId = player.videoId || "gbSBVpv595Y";
+  // Direct, reliable video stream URL for guaranteed playback
+  const videoUrl = player.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
@@ -69,7 +69,7 @@ export default function PlayerProfile() {
 
         </div>
 
-        {/* Video Highlight Showcase (Embedded Player) */}
+        {/* Video Highlight Showcase (HTML5 Native Video Player) */}
         <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px", borderRadius: "16px", marginBottom: "30px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
             <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", margin: 0 }}>Match & Scouting Highlights</h3>
@@ -78,15 +78,18 @@ export default function PlayerProfile() {
             </span>
           </div>
           <div style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "#020617", borderRadius: "10px", overflow: "hidden", border: "1px solid #334155" }}>
-            <iframe 
+            <video 
               width="100%" 
               height="100%" 
-              src={`https://www.youtube-nocookie.com/embed/${videoId}`} 
-              title={`${player.name} Highlight Reel`}
-              style={{ border: 0 }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            />
+              controls 
+              autoPlay 
+              muted 
+              loop
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              src={videoUrl}
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
