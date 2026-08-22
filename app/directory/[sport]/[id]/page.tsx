@@ -11,8 +11,8 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
-  // Default fallback YouTube video ID if none is set
-  const videoId = player.videoId || "Gq3s7v3rL2Q";
+  // Default fallback YouTube video ID that is guaranteed to embed properly
+  const videoId = player.videoId || "kJQP7kiw5Fk";
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
