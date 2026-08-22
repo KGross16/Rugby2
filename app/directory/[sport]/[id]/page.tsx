@@ -11,7 +11,7 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
-  // Direct, reliable video stream URL for guaranteed playback
+  // Direct MP4 video source
   const videoUrl = player.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
 
   return (
@@ -69,7 +69,7 @@ export default function PlayerProfile() {
 
         </div>
 
-        {/* Video Highlight Showcase (HTML5 Native Video Player) */}
+        {/* Video Highlight Showcase */}
         <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "24px", borderRadius: "16px", marginBottom: "30px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
             <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", margin: 0 }}>Match & Scouting Highlights</h3>
@@ -77,15 +77,11 @@ export default function PlayerProfile() {
               Position: {player.position} Reel
             </span>
           </div>
-          <div style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "#020617", borderRadius: "10px", overflow: "hidden", border: "1px solid #334155" }}>
+          <div style={{ width: "100%", backgroundColor: "#020617", borderRadius: "10px", overflow: "hidden", border: "1px solid #334155" }}>
             <video 
-              width="100%" 
-              height="100%" 
               controls 
-              autoPlay 
-              muted 
-              loop
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              preload="metadata"
+              style={{ width: "100%", maxHeight: "400px", display: "block", margin: "0 auto" }}
               src={videoUrl}
             >
               Your browser does not support the video tag.
