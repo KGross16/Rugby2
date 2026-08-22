@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/navigation"; // Note: Next link import check
 import LinkComponent from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -23,7 +22,7 @@ export default function PlayerProfile() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // You can also trigger a mailto link directly to your Outlook email:
+    // Triggers mailto to open your Outlook client directly with pre-filled details
     window.location.href = `mailto:kyle@edisonacquisitions.com?subject=Prospect Inquiry: ${player.name} (${player.id})&body=Coach Name: ${coachName}%0D%0AClub/Organization: ${clubName}%0D%0AEmail: ${coachEmail}%0D%0A%0D%0AInterested in securing direct outreach and telemetry access for ${player.name}.`;
   };
 
