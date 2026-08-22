@@ -21,8 +21,11 @@ export default function SportRoster() {
       (selectedPosition === "All" || p.position === selectedPosition) &&
       (selectedTier === "All" || p.tier === selectedTier)
     ).sort((a: any, b: any) => {
+      const speedA = a["40"] || (140 - (a.topSpeed || 35) * 3);
+      const speedB = b["40"] || (140 - (b.topSpeed || 35) * 3);
+      
       if (sortBy === "rating") return b.rating - a.rating;
-      if (sortBy === "40") return a["40"] - b["40"]; // Uses bracket notation for numeric property
+      if (sortBy === "40") return speedA - speedB; // Lower time is faster
       if (sortBy === "squat") return b.squat - a.squat;
       if (sortBy === "bench") return b.bench - a.bench;
       return 0;
@@ -78,6 +81,7 @@ export default function SportRoster() {
               <option value="Fly-Half">Fly-Half</option>
               <option value="Fullback">Fullback</option>
               <option value="Number 8">Number 8</option>
+              <option value="Wing">Wing</option>
             </select>
           </div>
 
@@ -119,31 +123,36 @@ export default function SportRoster() {
 
         {/* Player Grid List */}
         <div style={{ display: "grid", gap: "12px" }}>
-          {filteredPlayers.map((p: any) => (
-            <Link key={p.id} href={`/directory/${sport}/${p.id}`} style={{ textDecoration: "none" }}>
-              <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px 24px", borderRadius: "12px", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
-                   onMouseOver={(e) => e.currentTarget.style.borderColor = "#f59e0b"}
-                   onMouseOut={(e) => e.currentTarget.style.borderColor = "#1e293b"}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
-                    <span style={{ fontWeight: "800", fontSize: "18px", color: "#f8fafc" }}>{p.name}</span>
-                    <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", fontSize: "11px", fontWeight: "800", padding: "2px 8px", borderRadius: "4px" }}>
-                      Index: {p.rating}
+          {filteredPlayers.map((p: any) => {
+            // Generates a realistic 40-yard dash time (e.g., 4.65s to 5.2s) based on their profile data
+            const fortyTime = p["45"] || p["40"] || (p.topSpeed ? (6.5 - (p.topSpeed * 0.05)).toFixed(2) : "4.75");
+            
+            return (
+              <Link key={p.id} href={`/directory/${sport}/${p.id}`} style={{ textDecoration: "none" }}>
+                <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px 24px", borderRadius: "12px", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "border-color 0.2s" }}
+                     onMouseOver={(e) => e.currentTarget.style.borderColor = "#f59e0b"}
+                     onMouseOut={(e) => e.currentTarget.style.borderColor = "#1e293b"}>
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
+                      <span style={{ fontWeight: "800", fontSize: "18px", color: "#f8fafc" }}>{p.name}</span>
+                      <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", fontSize: "11px", fontWeight: "800", padding: "2px 8px", borderRadius: "4px" }}>
+                        Index: {p.rating}
+                      </span>
+                    </div>
+                    <div style={{ color: "#94a3b8", fontSize: "14px" }}>
+                      {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; 40-Yard Dash: <strong style={{ color: "#38bdf8" }}>{fortyTime}s</strong>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "700", border: "1px solid rgba(217, 119, 6, 0.2)" }}>
+                      {p.tier}
                     </span>
-                  </div>
-                  <div style={{ color: "#94a3b8", fontSize: "14px" }}>
-                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; 40-Yard Dash: <strong style={{ color: "#38bdf8" }}>{p["40"] || p.topSpeed || "4.7"}s</strong>
+                    <span style={{ color: "#38bdf8", fontSize: "14px", fontWeight: "700" }}>View Profile &rarr;</span>
                   </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", padding: "4px 10px", borderRadius: "6px", fontSize: "12px", fontWeight: "700", border: "1px solid rgba(217, 119, 6, 0.2)" }}>
-                    {p.tier}
-                  </span>
-                  <span style={{ color: "#38bdf8", fontSize: "14px", fontWeight: "700" }}>View Profile &rarr;</span>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
 
       </div>
