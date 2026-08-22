@@ -14,7 +14,7 @@ export default function SportRoster() {
   const [selectedTier, setSelectedTier] = useState("All");
   const [sortBy, setSortBy] = useState("rating");
 
-  // Advanced filtering and sorting logic using '40'
+  // Advanced filtering and sorting logic
   const filteredPlayers = useMemo(() => {
     return prospects.filter((p: any) => 
       (selectedCountry === "All" || p.origin === selectedCountry) &&
@@ -22,7 +22,7 @@ export default function SportRoster() {
       (selectedTier === "All" || p.tier === selectedTier)
     ).sort((a: any, b: any) => {
       if (sortBy === "rating") return b.rating - a.rating;
-      if (sortBy === "40") return a.40 - b.40; // Lower 40-yard dash time is faster
+      if (sortBy === "40") return a["40"] - b["40"]; // Uses bracket notation for numeric property
       if (sortBy === "squat") return b.squat - a.squat;
       if (sortBy === "bench") return b.bench - a.bench;
       return 0;
@@ -132,7 +132,7 @@ export default function SportRoster() {
                     </span>
                   </div>
                   <div style={{ color: "#94a3b8", fontSize: "14px" }}>
-                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; 40-Yard Dash: <strong style={{ color: "#38bdf8" }}>{p[40] || p.topSpeed || "4.7"}s</strong>
+                    {p.origin} &bull; Age {p.age} &bull; <span style={{ color: "#cbd5e1" }}>{p.position}</span> &bull; Squat: <strong style={{ color: "#f59e0b" }}>{p.squat} lbs</strong> &bull; 40-Yard Dash: <strong style={{ color: "#38bdf8" }}>{p["40"] || p.topSpeed || "4.7"}s</strong>
                   </div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
