@@ -9,7 +9,7 @@ export default function PlayerProfile() {
   const sport = typeof params.sport === 'string' ? params.sport : "rugby";
 
   // Find the specific player from your centralized prospects file
-  const player = prospects.find((p: any) => p.id === id) || prospects[0];
+  const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
   // Default fallback YouTube video ID if none is set
   const videoId = player.videoId || "Gq3s7v3rL2Q";
