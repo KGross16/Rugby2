@@ -185,7 +185,7 @@ export default function PlayerProfile() {
                     <input 
                       type="text" 
                       required
-                      value5={clubName}
+                      value={clubName}
                       onChange={(e) => setClubName(e.target.value)}
                       placeholder="e.g. Chicago Rugby Club" 
                       style={{ width: "100%", backgroundColor: "#020617", color: "#fff", border: "1px solid #334155", padding: "10px 12px", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
