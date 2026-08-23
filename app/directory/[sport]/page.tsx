@@ -2,7 +2,7 @@
 import LinkComponent from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { prospects } from "../../prospects";
+import { prospects } from "../../../prospects";
 
 export default function PlayerProfile() {
   const params = useParams();
@@ -85,7 +85,7 @@ export default function PlayerProfile() {
           </button>
         </div>
 
-        {/* FULL COMBINED METRICS GRID (INCLUDING NEW SPORT METRICS) */}
+        {/* FULL METRICS GRID */}
         <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Physical Benchmarks & Performance Analytics</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "15px", marginBottom: "30px" }}>
           
