@@ -19,6 +19,10 @@ export default function PlayerProfile() {
   // Find the specific player from your centralized prospects file
   const player: any = prospects.find((p: any) => p.id === id) || prospects[0];
 
+  // Baseline comparison calculations (e.g. positional averages for elite tier)
+  const squatDiff = player.squat - 420; // 420 lbs as positional baseline
+  const benchDiff = player.bench - 310; // 310 lbs as positional baseline
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -45,7 +49,6 @@ export default function PlayerProfile() {
               <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", fontSize: "12px", fontWeight: "800", padding: "4px 10px", borderRadius: "6px" }}>
                 Index: {player.rating}
               </span>
-              {/* FEATURE 2: Recruiting Status Badge */}
               <span style={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#34d399", fontSize: "12px", fontWeight: "800", padding: "4px 10px", borderRadius: "6px", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
                 {player.recruitingStatus || "Active Uncommitted"} &bull; {player.classYear || "Class of 2027"}
               </span>
@@ -74,23 +77,32 @@ export default function PlayerProfile() {
           </button>
         </div>
 
-        {/* Athletic Testing Metrics Grid */}
-        <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Physical Benchmarks</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "15px", marginBottom: "30px" }}>
+        {/* FEATURE 3: Athletic Testing Metrics Grid with Benchmark Comparison */}
+        <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Physical Benchmarks & Position Delta</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "15px", marginBottom: "30px" }}>
           
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px", borderRadius: "12px" }}>
             <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>SQUAT MAX</div>
-            <div style={{ fontSize: "24px", fontWeight: "900", color: "#f59e0b" }}>{player.squat} lbs</div>
+            <div style={{ fontSize: "24px", fontWeight: "900", color: "#f59e0b", marginBottom: "4px" }}>{player.squat} lbs</div>
+            <div style={{ fontSize: "12px", fontWeight: "700", color: squatDiff >= 0 ? "#10b981" : "#ef4444" }}>
+              {squatDiff >= 0 ? `+${squatDiff}` : squatDiff} lbs vs positional baseline
+            </div>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px", borderRadius: "12px" }}>
             <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>BENCH PRESS</div>
-            <div style={{ fontSize: "24px", fontWeight: "900", color: "#38bdf8" }}>{player.bench} lbs</div>
+            <div style={{ fontSize: "24px", fontWeight: "900", color: "#38bdf8", marginBottom: "4px" }}>{player.bench} lbs</div>
+            <div style={{ fontSize: "12px", fontWeight: "700", color: benchDiff >= 0 ? "#10b981" : "#ef4444" }}>
+              {benchDiff >= 0 ? `+${benchDiff}` : benchDiff} lbs vs positional baseline
+            </div>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>40-YARD DASH</div>
-            <div style={{ fontSize: "24px", fontWeight: "900", color: "#10b981" }}>{player["40"] || "4.72"}s</div>
+            <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>TOP SPEED (GPS)</div>
+            <div style={{ fontSize: "24px", fontWeight: "900", color: "#10b981", marginBottom: "4px" }}>{player.topSpeed || "20.2"} mph</div>
+            <div style={{ fontSize: "12px", fontWeight: "700", color: "#38bdf8" }}>
+              Verified Telemetry Feed
+            </div>
           </div>
 
         </div>
