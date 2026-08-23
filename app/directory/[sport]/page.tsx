@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useMemo } from "react";
-import { prospects } from "../../prospects";
+import { prospects } from "../prospects";
 
 export default function SportRoster() {
   const params = useParams();
@@ -94,7 +94,7 @@ export default function SportRoster() {
               style={{ backgroundColor: "#020617", color: "#f8fafc", border: "1px solid #334155", padding: "8px 12px", borderRadius: "8px", fontSize: "13px", fontWeight: "600" }}
             >
               <option value="All">All Tiers</option>
-              <option value="Tier 1">Tier 1 Elite</option>
+              <option value="Tier 1 Elite">Tier 1 Elite</option>
               <option value="Tier 2">Tier 2</option>
             </select>
           </div>
