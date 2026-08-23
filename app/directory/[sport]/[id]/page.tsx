@@ -40,16 +40,20 @@ export default function PlayerProfile() {
         {/* Player Header Card with Action Button */}
         <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "30px", borderRadius: "16px", marginBottom: "25px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px", flexWrap: "wrap" }}>
               <h1 style={{ fontSize: "32px", fontWeight: "900", color: "#f8fafc", margin: 0 }}>{player.name}</h1>
               <span style={{ backgroundColor: "rgba(56, 189, 248, 0.1)", color: "#38bdf8", fontSize: "12px", fontWeight: "800", padding: "4px 10px", borderRadius: "6px" }}>
                 Index: {player.rating}
+              </span>
+              {/* FEATURE 2: Recruiting Status Badge */}
+              <span style={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#34d399", fontSize: "12px", fontWeight: "800", padding: "4px 10px", borderRadius: "6px", border: "1px solid rgba(16, 185, 129, 0.3)" }}>
+                {player.recruitingStatus || "Active Uncommitted"} &bull; {player.classYear || "Class of 2027"}
               </span>
             </div>
             <p style={{ color: "#94a3b8", fontSize: "15px", margin: "0 0 15px 0" }}>
               {player.origin} &bull; Age {player.age} &bull; <strong style={{ color: "#cbd5e1" }}>{player.position}</strong>
             </p>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <span style={{ backgroundColor: "rgba(217, 119, 6, 0.1)", color: "#f59e0b", padding: "4px 12px", borderRadius: "6px", fontSize: "12px", fontWeight: "700", border: "1px solid rgba(217, 119, 6, 0.2)" }}>
                 {player.tier}
               </span>
@@ -91,7 +95,7 @@ export default function PlayerProfile() {
 
         </div>
 
-        {/* FEATURE 1: Verified Video / Game Film Embed Section */}
+        {/* Verified Video / Game Film Embed Section */}
         <div style={{ marginBottom: "30px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
             <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", margin: 0 }}>Verified Game Film & Movement Telemetry</h3>
