@@ -2,7 +2,7 @@
 import LinkComponent from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { prospects } from "@/prospects";
+import { prospects } from "../../prospects";
 
 export default function PlayerProfile() {
   const params = useParams();
