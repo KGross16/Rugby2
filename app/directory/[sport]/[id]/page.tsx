@@ -91,6 +91,31 @@ export default function PlayerProfile() {
 
         </div>
 
+        {/* FEATURE 1: Verified Video / Game Film Embed Section */}
+        <div style={{ marginBottom: "30px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
+            <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", margin: 0 }}>Verified Game Film & Movement Telemetry</h3>
+            <span style={{ fontSize: "12px", color: "#64748b", fontWeight: "700" }}>HUDL / DIRECT FEED</span>
+          </div>
+          
+          <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", borderRadius: "16px", overflow: "hidden", position: "relative", aspectRatio: "16/9" }}>
+            {player.videoUrl ? (
+              <iframe 
+                src={player.videoUrl} 
+                title={`${player.name} Highlight Reel`}
+                style={{ width: "100%", height: "100%", border: "none" }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              />
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", color: "#64748b", padding: "20px", textAlign: "center" }}>
+                <p style={{ fontSize: "16px", fontWeight: "700", color: "#94a3b8", margin: "0 0 5px 0" }}>Encrypted Game Film Archive</p>
+                <p style={{ fontSize: "13px", margin: 0 }}>Verified highlight reel available to authorized coaching staff via direct outreach.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Modal Popup for Outreach Inquiry */}
         {isModalOpen && (
           <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(2, 6, 23, 0.8)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 100, padding: "20px" }}>
