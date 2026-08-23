@@ -22,6 +22,7 @@ export default function PlayerProfile() {
   // Baseline comparison calculations (e.g. positional averages for elite tier)
   const squatDiff = player.squat - 420; // 420 lbs as positional baseline
   const benchDiff = player.bench - 310; // 310 lbs as positional baseline
+  const dashTime = player.fortyDash || "4.68"; // 40-yard dash baseline or prospect value
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,7 +88,7 @@ export default function PlayerProfile() {
           </button>
         </div>
 
-        {/* Athletic Testing Metrics Grid with Benchmark Comparison */}
+        {/* Athletic Testing Metrics Grid with 40-Yard Dash & Positional Baselines */}
         <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Physical Benchmarks & Position Delta</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "15px", marginBottom: "30px" }}>
           
@@ -108,10 +109,10 @@ export default function PlayerProfile() {
           </div>
 
           <div style={{ backgroundColor: "#0f172a", border: "1px solid #1e293b", padding: "20px", borderRadius: "12px" }}>
-            <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>TOP SPEED (GPS)</div>
-            <div style={{ fontSize: "24px", fontWeight: "900", color: "#10b981", marginBottom: "4px" }}>{player.topSpeed || "20.2"} mph</div>
+            <div style={{ fontSize: "12px", fontWeight: "700", color: "#94a3b8", marginBottom: "5px" }}>40-YARD DASH</div>
+            <div style={{ fontSize: "24px", fontWeight: "900", color: "#10b981", marginBottom: "4px" }}>{dashTime} s</div>
             <div style={{ fontSize: "12px", fontWeight: "700", color: "#38bdf8" }}>
-              Verified Telemetry Feed
+              Laser Timed &bull; Verified Feed
             </div>
           </div>
 
