@@ -34,11 +34,21 @@ export default function PlayerProfile() {
     <main style={{ minHeight: "100vh", backgroundColor: "#020617", fontFamily: "system-ui, sans-serif", color: "#f8fafc", padding: "40px 20px" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         
-        {/* Back Navigation */}
-        <div style={{ marginBottom: "25px" }}>
+        {/* Back Navigation & Print Action */}
+        <div style={{ marginBottom: "25px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <LinkComponent href={`/directory/${sport}`} style={{ color: "#38bdf8", fontSize: "14px", textDecoration: "none", fontWeight: "600" }}>
             &larr; Back to {sport} Terminal
           </LinkComponent>
+          
+          {/* FEATURE 4: Print / PDF Dossier Trigger */}
+          <button 
+            onClick={() => window.print()}
+            style={{ backgroundColor: "transparent", color: "#94a3b8", border: "1px solid #334155", padding: "6px 14px", borderRadius: "8px", fontSize: "13px", fontWeight: "700", cursor: "pointer" }}
+            onMouseOver={(e) => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = "#64748b"; }}
+            onMouseOut={(e) => { e.currentTarget.style.color = "#94a3b8"; e.currentTarget.style.borderColor = "#334155"; }}
+          >
+            🖨️ Export Dossier (PDF)
+          </button>
         </div>
 
         {/* Player Header Card with Action Button */}
@@ -77,7 +87,7 @@ export default function PlayerProfile() {
           </button>
         </div>
 
-        {/* FEATURE 3: Athletic Testing Metrics Grid with Benchmark Comparison */}
+        {/* Athletic Testing Metrics Grid with Benchmark Comparison */}
         <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#f8fafc", marginBottom: "15px" }}>Verified Physical Benchmarks & Position Delta</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "15px", marginBottom: "30px" }}>
           
@@ -175,7 +185,7 @@ export default function PlayerProfile() {
                     <input 
                       type="text" 
                       required
-                      value={clubName}
+                      value5={clubName}
                       onChange={(e) => setClubName(e.target.value)}
                       placeholder="e.g. Chicago Rugby Club" 
                       style={{ width: "100%", backgroundColor: "#020617", color: "#fff", border: "1px solid #334155", padding: "10px 12px", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
