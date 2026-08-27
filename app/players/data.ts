@@ -1,16 +1,17 @@
-export interface Player {
+export interface AthleteMetrics {
   id: string;
   name: string;
+  ageDivision: 'U18' | 'U20' | 'U23';
   position: string;
-  age: number;
-  weight: string;
-  status: "Active" | "Injured" | "Development";
+  metrics: {
+    speed10m: number;        // Acceleration (seconds)
+    speed40m: number;        // Top-end speed (seconds)
+    yoYoIR2: number;         // Aerobic capacity / endurance stage
+    powerScore: number;      // Calculated power index
+    yardsPerCarry: number;   // Offensive efficiency / gain per attempt
+    tackleCompletion: number;// Defensive efficiency (percentage success)
+    na4Tier: 'Tier 1' | 'Tier 2' | 'Tier 3';
+  };
+  verified: boolean;
+  lastUpdated: string;
 }
-
-export const initialPlayers: Player[] = [
-  { id: "1", name: "Marcus Vance", position: "Prop", age: 20, weight: "245 lbs", status: "Active" },
-  { id: "2", name: "Liam O'Connor", position: "Hooker", age: 19, weight: "220 lbs", status: "Active" },
-  { id: "3", name: "Dante Holloway", position: "Lock", age: 21, weight: "235 lbs", status: "Active" },
-  { id: "4", name: "Caleb Sterling", position: "Scrum-half", age: 18, weight: "175 lbs", status: "Development" },
-  { id: "5", name: "Jonah Reed", position: "Fly-half", age: 20, weight: "190 lbs", status: "Active" },
-];
