@@ -31,5 +31,12 @@ export default function PlayersPage() {
     { id: "29", name: "Declan Walsh", index: 87, region: "USA", age: 20, position: "Lock", squat: "500 lbs", bench: "360 lbs", yardsPerCarry: 3.0, tackleCompletion: 86 },
     { id: "30", name: "Zach Miller", index: 87, region: "USA", age: 21, position: "Scrum-Half", squat: "385 lbs", bench: "270 lbs", yardsPerCarry: 5.3, tackleCompletion: 79 },
     { id: "31", name: "Spencer Wyatt", index: 87, region: "USA", age: 21, position: "Fullback", squat: "405 lbs", bench: "285 lbs", yardsPerCarry: 6.5, tackleCompletion: 73 },
-    { id: "32", name: "Braden O'Shea", index: 86, region: "Ireland / USA", age: 20, position: "Prop", squat: "540 lbs", bench: "390 lbs", yardsPerCarry: 2.2, tackleCompletion: 90 },
+    { id: "32", name: "Braden O'Shea", index: 86, region: "Ireland / USA", age: 20, position: "Prop", squat: "540 lbs", bench: "390 lbs", yardsPerCarry: 2.2, tackleCompletion: 90 }
   ];
+
+  return (
+    <main style={{ minHeight: "100vh", backgroundColor: "#f8fafa", fontFamily: "system-ui, sans-serif", padding: "40px 20px" }}>
+      {/* Component content mapping players */}
+    </main>
+  );
+}
