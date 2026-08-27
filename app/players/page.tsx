@@ -1,64 +1,35 @@
-import Link from "next/link";
-
-const players = [
-  { id: "1", name: "Marcus Vance", position: "Prop", age: 20, weight: "245 lbs", status: "Active" },
-  { id: "2", name: "Liam O'Connor", position: "Hooker", age: 19, weight: "220 lbs", status: "Active" },
-  { id: "3", name: "Dante Holloway", position: "Lock", age: 21, weight: "235 lbs", status: "Active" },
-  { id: "4", name: "Caleb Sterling", position: "Scrum-half", age: 18, weight: "175 lbs", status: "Development" },
-  { id: "5", name: "Jonah Reed", position: "Fly-half", age: 20, weight: "190 lbs", status: "Active" },
-];
-
 export default function PlayersPage() {
-  return (
-    <main style={{ minHeight: "100vh", backgroundColor: "#f8fafc", fontFamily: "system-ui, sans-serif", padding: "40px 20px" }}>
-      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-        
-        {/* Navigation & Header */}
-        <div style={{ marginBottom: "24px" }}>
-          <Link href="/" style={{ color: "#2563eb", textDecoration: "none", fontSize: "14px", fontWeight: "600" }}>
-            &larr; Back to Dashboard
-          </Link>
-          <h1 style={{ margin: "8px 0 0 0", fontSize: "26px", fontWeight: "700", color: "#0f172a" }}>Athlete Roster</h1>
-        </div>
-
-        {/* Player Table Container */}
-        <div style={{ backgroundColor: "white", borderRadius: "12px", border: "1px solid #e2e8f0", overflow: "hidden", boxShadow: "0 1px 3px 0 rgb(0 0 0 / 0.05)" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
-            <thead>
-              <tr style={{ backgroundColor: "#f1f5f9", borderBottom: "1px solid #e2e8f0", color: "#475569", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                <th style={{ padding: "16px" }}>Name</th>
-                <th style={{ padding: "16px" }}>Position</th>
-                <th style={{ padding: "16px" }}>Age</th>
-                <th style={{ padding: "16px" }}>Weight</th>
-                <th style={{ padding: "16px" }}>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {players.map((player) => (
-                <tr key={player.id} style={{ borderBottom: "1px solid #f1f5f9" }}>
-                  <td style={{ padding: "16px", fontWeight: "600", color: "#1e293b" }}>{player.name}</td>
-                  <td style={{ padding: "16px", color: "#64748b" }}>{player.position}</td>
-                  <td style={{ padding: "16px", color: "#64748b" }}>{player.age}</td>
-                  <td style={{ padding: "16px", color: "#64748b" }}>{player.weight}</td>
-                  <td style={{ padding: "16px" }}>
-                    <span style={{ 
-                      padding: "4px 10px", 
-                      borderRadius: "20px", 
-                      fontSize: "12px", 
-                      fontWeight: "600",
-                      backgroundColor: player.status === "Active" ? "#dcfce7" : "#fef3c7",
-                      color: player.status === "Active" ? "#166534" : "#92400e"
-                    }}>
-                      {player.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </main>
-  );
-}
+  const players = [
+    { id: "1", name: "Ebenezer Adebayo", index: 98, region: "UK / USA", age: 22, position: "Wing", squat: "460 lbs", bench: "330 lbs", yardsPerCarry: 6.8, tackleCompletion: 82 },
+    { id: "2", name: "Darius King", index: 97, region: "USA", age: 22, position: "Center", squat: "510 lbs", bench: "380 lbs", yardsPerCarry: 6.2, tackleCompletion: 86 },
+    { id: "3", name: "Liam O'Connor", index: 96, region: "Ireland / USA", age: 20, position: "Fly-Half", squat: "400 lbs", bench: "290 lbs", yardsPerCarry: 5.5, tackleCompletion: 78 },
+    { id: "4", name: "Marcus Bradley", index: 95, region: "USA", age: 21, position: "Flanker", squat: "480 lbs", bench: "340 lbs", yardsPerCarry: 4.5, tackleCompletion: 91 },
+    { id: "5", name: "Mason Cole", index: 95, region: "USA", age: 21, position: "Fullback", squat: "440 lbs", bench: "315 lbs", yardsPerCarry: 7.1, tackleCompletion: 76 },
+    { id: "6", name: "Kofi Mensah", index: 95, region: "Ghana / USA", age: 21, position: "Wing", squat: "450 lbs", bench: "320 lbs", yardsPerCarry: 6.5, tackleCompletion: 80 },
+    { id: "7", name: "Jaxson Reed", index: 94, region: "USA", age: 20, position: "Lock", squat: "540 lbs", bench: "395 lbs", yardsPerCarry: 3.2, tackleCompletion: 89 },
+    { id: "8", name: "Mateo Silva", index: 94, region: "Argentina / USA", age: 21, position: "Scrum-Half", squat: "420 lbs", bench: "300 lbs", yardsPerCarry: 5.8, tackleCompletion: 83 },
+    { id: "9", name: "Julian Vargas", index: 94, region: "Argentina", age: 21, position: "Fly-Half", squat: "390 lbs", bench: "280 lbs", yardsPerCarry: 5.2, tackleCompletion: 77 },
+    { id: "10", name: "Malik Johnson", index: 94, region: "USA", age: 21, position: "Center", squat: "495 lbs", bench: "365 lbs", yardsPerCarry: 6.0, tackleCompletion: 85 },
+    { id: "11", name: "Carlton Banks", index: 93, region: "USA", age: 22, position: "Prop", squat: "580 lbs", bench: "430 lbs", yardsPerCarry: 2.1, tackleCompletion: 93 },
+    { id: "12", name: "Lucas Moreau", index: 93, region: "France / USA", age: 22, position: "Flanker", squat: "470 lbs", bench: "330 lbs", yardsPerCarry: 4.7, tackleCompletion: 90 },
+    { id: "13", name: "Declan Smith", index: 93, region: "New Zealand", age: 22, position: "Fullback", squat: "430 lbs", bench: "305 lbs", yardsPerCarry: 6.9, tackleCompletion: 75 },
+    { id: "14", name: "Soren Jensen", index: 92, region: "New Zealand / USA", age: 22, position: "Lock", squat: "530 lbs", bench: "385 lbs", yardsPerCarry: 3.4, tackleCompletion: 88 },
+    { id: "15", name: "Toby Lawrence", index: 92, region: "Australia / USA", age: 22, position: "Scrum-Half", squat: "410 lbs", bench: "290 lbs", yardsPerCarry: 5.6, tackleCompletion: 81 },
+    { id: "16", name: "Henry Vance", index: 91, region: "USA", age: 21, position: "Prop", squat: "565 lbs", bench: "415 lbs", yardsPerCarry: 2.3, tackleCompletion: 92 },
+    { id: "17", name: "Hunter Brooks", index: 91, region: "USA", age: 20, position: "Wing", squat: "435 lbs", bench: "310 lbs", yardsPerCarry: 6.3, tackleCompletion: 79 },
+    { id: "18", name: "Gavin Stewart", index: 90, region: "South Africa / USA", age: 20, position: "Flanker", squat: "450 lbs", bench: "320 lbs", yardsPerCarry: 4.6, tackleCompletion: 89 },
+    { id: "19", name: "Charlie Daniels", index: 90, region: "USA", age: 22, position: "Fly-Half", squat: "380 lbs", bench: "270 lbs", yardsPerCarry: 5.0, tackleCompletion: 76 },
+    { id: "20", name: "Brendan Foster", index: 90, region: "New Zealand / USA", age: 20, position: "Center", squat: "480 lbs", bench: "350 lbs", yardsPerCarry: 5.9, tackleCompletion: 84 },
+    { id: "21", name: "Cole Harrison", index: 89, region: "USA", age: 21, position: "Lock", squat: "510 lbs", bench: "370 lbs", yardsPerCarry: 3.1, tackleCompletion: 87 },
+    { id: "22", name: "Ethan Bridge", index: 89, region: "USA", age: 20, position: "Scrum-Half", squat: "395 lbs", bench: "280 lbs", yardsPerCarry: 5.4, tackleCompletion: 80 },
+    { id: "23", name: "Logan Pearce", index: 89, region: "USA", age: 20, position: "Fullback", squat: "415 lbs", bench: "295 lbs", yardsPerCarry: 6.7, tackleCompletion: 74 },
+    { id: "24", name: "Cameron Scott", index: 89, region: "USA", age: 21, position: "Wing", squat: "420 lbs", bench: "300 lbs", yardsPerCarry: 6.1, tackleCompletion: 78 },
+    { id: "25", name: "Viktor Petrov", index: 88, region: "Canada", age: 22, position: "Prop", squat: "550 lbs", bench: "400 lbs", yardsPerCarry: 2.0, tackleCompletion: 91 },
+    { id: "26", name: "Owen Mercer", index: 88, region: "USA", age: 21, position: "Flanker", squat: "440 lbs", bench: "310 lbs", yardsPerCarry: 4.4, tackleCompletion: 88 },
+    { id: "27", name: "Finn Callahan", index: 88, region: "USA", age: 20, position: "Fly-Half", squat: "370 lbs", bench: "260 lbs", yardsPerCarry: 4.9, tackleCompletion: 75 },
+    { id: "28", name: "Tyler Davis", index: 88, region: "USA", age: 21, position: "Center", squat: "465 lbs", bench: "340 lbs", yardsPerCarry: 5.7, tackleCompletion: 83 },
+    { id: "29", name: "Declan Walsh", index: 87, region: "USA", age: 20, position: "Lock", squat: "500 lbs", bench: "360 lbs", yardsPerCarry: 3.0, tackleCompletion: 86 },
+    { id: "30", name: "Zach Miller", index: 87, region: "USA", age: 21, position: "Scrum-Half", squat: "385 lbs", bench: "270 lbs", yardsPerCarry: 5.3, tackleCompletion: 79 },
+    { id: "31", name: "Spencer Wyatt", index: 87, region: "USA", age: 21, position: "Fullback", squat: "405 lbs", bench: "285 lbs", yardsPerCarry: 6.5, tackleCompletion: 73 },
+    { id: "32", name: "Braden O'Shea", index: 86, region: "Ireland / USA", age: 20, position: "Prop", squat: "540 lbs", bench: "390 lbs", yardsPerCarry: 2.2, tackleCompletion: 90 },
+  ];
